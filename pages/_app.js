@@ -41,7 +41,7 @@ const center = {
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  zoomcontrol: true,
+  zoomControl: true,
 };
 
 export default function App() {
