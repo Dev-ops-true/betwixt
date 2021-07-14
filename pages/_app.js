@@ -3,11 +3,10 @@ import React from "react";
 
 import {
   GoogleMap,
-  useLoadScript,
-  Marker,
-  Infowindow,
+  LoadScriptNext,
   DirectionsService,
-  Polyline
+  DirectionsRenderer,
+  Marker
 } from "@react-google-maps/api";
 
 import usePlacesComplete, {
@@ -47,76 +46,90 @@ const options = {
 };
 
 export default function App() {
-  const {isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: "AIzaSyBXlpinTY2iWYVXDuFFbE9PnrPIr7cfNHk",
-    libraries,
-  });
+  const [origin, setOrigin] = React.useState("");
+  const [destination, setDestination] = React.useState("");
+  const [travelMode, setTravelMode] = React.useState('DRIVING');
+  const [response, setResponse] = React.useState(null);
+  const [midpoint, setMidpoint] = React.useState(null);
 
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map;
-  }, []);
+  const directionsCallback = (response) => {
+    console.log(response)
 
-  const [postCode1, setPostCode1] = React.useState("SG12 7LW");
-  const [postCode2, setPostCode2] = React.useState("CV4 7GG");
-
-  // const onDirectionsServiceLoad = React.useCallback((directionsService) => {
-  //   directionsService.route({
-  //     origin: getLatLng(postCode1),
-  //     destination: getLatLng(postCode2),
-  //     travelMode: 'DRIVING',
-  //   }, (response, status) => {
-  //     if (status === 'OK') {
-  //       const {routes} = response;
-  //       const {legs} = routes[0];
-  //       const {steps} = legs[0];
-  //       const polyline = new Polyline({
-  //         path: steps[0].polyline.points,
-  //         strokeColor: "#FF0000",
-  //         strokeOpacity: 0.3,
-  //         strokeWeight: 5,
-  //       });
-  //       mapRef.current.addOverlay(polyline);
-  //     }
-  //   });
-  // }, [postCode1, postCode2]);
-
-  if (loadError) return "Error loading maps";
-  if (!isLoaded) return "Loading maps";
+    if (response !== null) {
+      if (response.status === 'OK') {
+        setResponse(response)
+        const midpointIndex = response.routes[0].overview_path.length / 2;
+        setMidpoint(response.routes[0].overview_path[midpointIndex])
+      } else {
+        console.log('response: ', response)
+      }
+    }
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  }
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    event.target.name === "postCode1" ? setPostCode1(event.target.value) : setPostCode2(event.target.value);
+    setOrigin(event.target.childNodes[0].value);
+    setDestination(event.target.childNodes[1].value);
   }
 
   return (
     <div>
       <h1>Betwixt</h1>
-      <SearchBox handleSubmit={handleSubmit} handleChange={handleChange}/>
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={12}
-        center={center}
-        options={options}
-        onLoad={onMapLoad}
+      <SearchBox handleSubmit={handleSubmit}/>
+      <LoadScriptNext
+        googleMapsApiKey={"AIzaSyBXlpinTY2iWYVXDuFFbE9PnrPIr7cfNHk"}
       >
-        {/* <>
-          <DirectionsService onLoad={onDirectionsServiceLoad} options={{}}/>
-        </> */}
-      </GoogleMap>
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={12}
+          center={center}
+          options={options}
+        >
+          {
+            (
+              destination !== '' &&
+              origin !== ''
+            ) && (
+              <DirectionsService
+                options={{
+                  destination: destination,
+                  origin: origin,
+                  travelMode: 'DRIVING'
+                }}
+                callback={directionsCallback}
+              />
+            )
+          }
+
+          {
+            response !== null && (
+              <DirectionsRenderer
+                options={{
+                  directions: response
+                }}
+              />
+            )
+          }
+
+          {
+            midpoint !== null && (
+              <Marker
+                position={midpoint}
+                title="Midpoint"
+              />
+            )
+          }
+        </GoogleMap>
+      </LoadScriptNext>
     </div>
   );
 }
 
-function SearchBox({handleChange, handleSubmit}) {
+function SearchBox({handleSubmit}) {
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className="search">
-      <input type="text" name="postCode1" placeholder="Your post code" onChange={(e) => handleChange(e)}/>
-      <input type="text" name="postCode2" placeholder="Your friend's post code" onChange={(e) => handleChange(e)}/>
+    <form className="search" onSubmit={(e) => handleSubmit(e)}>
+      <input type="text" name="origin" placeholder="Your post code"/>
+      <input type="text" name="destination" placeholder="Your friend's post code"/>
       <button type="submit">Search</button>
     </form>
   )
