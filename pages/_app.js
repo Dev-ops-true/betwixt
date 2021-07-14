@@ -58,7 +58,7 @@ export default function App() {
     if (response !== null) {
       if (response.status === 'OK') {
         setResponse(response)
-        const midpointIndex = response.routes[0].overview_path.length / 2;
+        const midpointIndex = Math.round(response.routes[0].overview_path.length / 2);
         setMidpoint(response.routes[0].overview_path[midpointIndex])
       } else {
         console.log('response: ', response)
@@ -70,6 +70,7 @@ export default function App() {
     event.preventDefault();
     setOrigin(event.target.childNodes[0].value);
     setDestination(event.target.childNodes[1].value);
+    setTravelMode(event.target.childNodes[2].value);
   }
 
   return (
@@ -94,7 +95,7 @@ export default function App() {
                 options={{
                   destination: destination,
                   origin: origin,
-                  travelMode: 'DRIVING'
+                  travelMode: travelMode
                 }}
                 callback={directionsCallback}
               />
@@ -130,6 +131,12 @@ function SearchBox({handleSubmit}) {
     <form className="search" onSubmit={(e) => handleSubmit(e)}>
       <input type="text" name="origin" placeholder="Your post code"/>
       <input type="text" name="destination" placeholder="Your friend's post code"/>
+      <select name="travelMode">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+      </select>
       <button type="submit">Search</button>
     </form>
   )
