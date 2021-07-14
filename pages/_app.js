@@ -49,6 +49,7 @@ export default function App() {
   const [origin, setOrigin] = React.useState("");
   const [destination, setDestination] = React.useState("");
   const [travelMode, setTravelMode] = React.useState('DRIVING');
+  const [directionsOptionsChanged, setDirectionsOptionsChanged] = React.useState(false);
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
 
@@ -57,6 +58,7 @@ export default function App() {
 
     if (response !== null) {
       if (response.status === 'OK') {
+        setDirectionsOptionsChanged(false)
         setResponse(response)
         const midpointIndex = Math.round(response.routes[0].overview_path.length / 2);
         setMidpoint(response.routes[0].overview_path[midpointIndex])
@@ -71,6 +73,7 @@ export default function App() {
     setOrigin(event.target.childNodes[0].value);
     setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
+    setDirectionsOptionsChanged(true);
   }
 
   return (
@@ -89,7 +92,8 @@ export default function App() {
           {
             (
               destination !== '' &&
-              origin !== ''
+              origin !== '' &&
+              directionsOptionsChanged
             ) && (
               <DirectionsService
                 options={{
