@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reach/combobox": "^0.15.3",
+    "@react-google-maps/api": "^2.2.0",
+    "google-map-react": "^2.1.10",
+    "google-maps-react": "^2.0.6",
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-google-maps": "^9.4.5",
+    "use-places-autocomplete": "^1.9.3",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "eslint": "7.30.0",
