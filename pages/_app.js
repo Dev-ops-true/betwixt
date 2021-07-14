@@ -17,7 +17,7 @@ import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
-  ComboxboxList,
+  ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
 
@@ -61,14 +61,14 @@ export default function App() {
   return (
     <div>
       <h1>Betwixt</h1>
-    <Search />
-    <GoogleMap
-      mapContainerStyle={mapContainerStyle}
-      zoom={12}
-      center={center}
-      options={options}
-      onLoad={onMapLoad}
-      ></GoogleMap>
+      <Search />
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        zoom={12}
+        center={center}
+        options={options}
+        onLoad={onMapLoad}
+      />
   </div>
   );
 }
@@ -87,23 +87,27 @@ function Search() {
     },
   });
 
-
   return (
     <div className="search">
-    <Combobox
-      onSelect={(address) => {
-        console.log(address);
-      }}
-    >
-      <ComboboxInput
-      value={value}
-      onChange={(e) => {
-        setValue(e.target.value);
-      }}
-      disabled={!ready}
-      placeholder="Where does your mate live?"
-    />
-
-    </Combobox></div>
+      <Combobox
+        onSelect={(address) => {
+          console.log(address);
+        }}
+      >
+        <ComboboxInput
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          disabled={!ready}
+          placeholder="Where does your mate live?"
+        />
+        <ComboboxPopover>
+          {status === "OK" && data.map(({ id, description }) => (
+            <ComboboxOption key={id} value={description} />
+          ))}
+        </ComboboxPopover>
+      </Combobox>
+    </div>
   );
 }
