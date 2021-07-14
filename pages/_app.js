@@ -98,7 +98,7 @@ function Search() {
       <ComboboxInput
       value={value}
       onChange={(e) => {
-        setValue=(e.target.value);
+        setValue(e.target.value);
       }}
       disabled={!ready}
       placeholder="Where does your mate live?"
