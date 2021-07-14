@@ -9,23 +9,7 @@ import {
   Marker
 } from "@react-google-maps/api";
 
-import usePlacesComplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox";
-
-import "@reach/combobox/styles.css";
-
 import mapStyles from "../mapStyles";
-import usePlacesAutocomplete from 'use-places-autocomplete';
 
 const libraries = ["places"];
 
