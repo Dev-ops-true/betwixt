@@ -52,13 +52,24 @@ export default function Home() {
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setOrigin(event.target.childNodes[0].value);
     setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
     setDirectionsOptionsChanged(true);
+    
+
+    // const myRequest = await fetch('/api/google', {method: "POST", body: {
+    //   lat: 0.13413413,
+    //   long: -0.13241412
+    // }})
+    const myRequest = await fetch('/api/google')
+    const jsonMyRequest = await myRequest.json()
+
+    console.log(jsonMyRequest) // whatever google sent me
   }
+
 
   return (
     <div>
