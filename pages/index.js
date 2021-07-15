@@ -63,9 +63,9 @@ export default function Home() {
   return (
     <div>
       <h1>Betwixt</h1>
-      <SearchBox handleSubmit={handleSubmit}/>
+      <SearchBox handleSubmit={handleSubmit} />
       <LoadScriptNext
-        googleMapsApiKey={"AIzaSyBXlpinTY2iWYVXDuFFbE9PnrPIr7cfNHk"}
+        googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
       >
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
@@ -110,6 +110,6 @@ export default function Home() {
           }
         </GoogleMap>
       </LoadScriptNext>
-    </div>
+    </div >
   );
 }
