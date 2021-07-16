@@ -37,37 +37,36 @@ export default function Home() {
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
 
-  const directionsCallback = (response) => {
-    console.log(response)
-
+  const directionsCallback = async (response) => {
     if (response !== null) {
       if (response.status === 'OK') {
         setDirectionsOptionsChanged(false)
         setResponse(response)
         const midpointIndex = Math.round(response.routes[0].overview_path.length / 2);
-        setMidpoint(response.routes[0].overview_path[midpointIndex])
+        const midpoint = response.routes[0].overview_path[midpointIndex]
+        setMidpoint(midpoint)
+        const places = await fetch(
+          '/api/google', {
+          method: 'POST',
+          body: JSON.stringify(midpoint),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        const placesJson = await places.json()
+        // do something with placesJson here
       } else {
         console.log('response: ', response)
       }
     }
   }
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setOrigin(event.target.childNodes[0].value);
     setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
     setDirectionsOptionsChanged(true);
-    const response = await fetch(
-      '/api/google', {
-      method: 'POST',
-      body: JSON.stringify(midpoint),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    const responseJson = await response.json()
-    console.log(responseJson)
   }
 
   return (
