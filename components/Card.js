@@ -5,11 +5,8 @@ import styles from './Card.module.css'
 export default function Card(props) {
 
   return <div className={styles.card}>
+    <p><img className={styles.card_image} src={props.photo_link}></img></p>
     <p className={styles.card_title}>{props.name}</p>
-    <p>
-      <span>{props.rating}</span>
-      <span>{`(${props.ratings_num})`}</span>
-    </p>
     <ReactStars
       size={20}
       max={5}
@@ -17,8 +14,8 @@ export default function Card(props) {
       isHalf={true}
       edit={false}
     />
-    <p>{props.address}</p>
-    <img className={styles.card_image} src={props.photo_link}></img>
+    <span className={styles.card_ratings_num}>{`(${props.ratings_num})`}</span>
+    <p className={styles.card_address}>{props.address}</p>
   </div>
 
 }
