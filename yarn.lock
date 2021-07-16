@@ -69,6 +69,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fortawesome/fontawesome-free@^5.15.3":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+
 "@googlemaps/js-api-loader@1.11.4":
   version "1.11.4"
   resolved "https://registry.npmjs.org/@googlemaps/js-api-loader/-/js-api-loader-1.11.4.tgz"
@@ -265,6 +270,11 @@
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz"
   integrity sha512-Myxw//kzromB9yWgS8qYGuGVf91oBUUJpNvy5eM50sqvmKLbKjwLxohJnkWGTeeI9v9IBMtPLxz5Gc60FIfvCA==
 
+"@types/json-schema@^7.0.7":
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.8.tgz#edf1bf1dbf4e04413ca8e5b17b3b7d7d54b59818"
+  integrity sha512-YSBPTLTVm2e2OoQIDYx8HaeWJ5tTToLH67kXR7zYNGupXMEHa2++G8k+DczX2cFVgalypqtyZIcU19AFcmOpmg==
+
 "@types/node@*":
   version "16.3.1"
   resolved "https://registry.npmjs.org/@types/node/-/node-16.3.1.tgz"
@@ -324,7 +334,12 @@ acorn@^7.4.0:
   resolved "https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-ajv@^6.10.0, ajv@^6.12.4:
+ajv-keywords@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
+  integrity sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==
+
+ajv@^6.10.0, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -990,6 +1005,11 @@ emojis-list@^2.0.0:
   resolved "https://registry.npmjs.org/emojis-list/-/emojis-list-2.1.0.tgz"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
+emojis-list@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
+  integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
+
 encoding@0.1.13:
   version "0.1.13"
   resolved "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz"
@@ -1336,6 +1356,14 @@ file-entry-cache@^6.0.1:
   integrity sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==
   dependencies:
     flat-cache "^3.0.4"
+
+file-loader@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-6.2.0.tgz#baef7cf8e1840df325e4390b4484879480eebe4d"
+  integrity sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==
+  dependencies:
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
 
 fill-range@^7.0.1:
   version "7.0.1"
@@ -1820,7 +1848,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.2.0:
+json5@^2.1.2, json5@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.0.tgz"
   integrity sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA==
@@ -1873,6 +1901,15 @@ loader-utils@1.2.3:
     big.js "^5.2.2"
     emojis-list "^2.0.0"
     json5 "^1.0.1"
+
+loader-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.0.tgz#e4cace5b816d425a166b5f097e10cd12b36064b0"
+  integrity sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==
+  dependencies:
+    big.js "^5.2.2"
+    emojis-list "^3.0.0"
+    json5 "^2.1.2"
 
 locate-path@^2.0.0:
   version "2.0.0"
@@ -2691,6 +2728,15 @@ scheduler@^0.20.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+schema-utils@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-3.1.0.tgz#95986eb604f66daadeed56e379bfe7a7f963cdb9"
+  integrity sha512-tTEaeYkyIhEZ9uWgAjDerWov3T9MgX8dhhy2r0IGeeX4W8ngtGl1++dUve/RUqzuaASSh7shwCDJjEzthxki8w==
+  dependencies:
+    "@types/json-schema" "^7.0.7"
+    ajv "^6.12.5"
+    ajv-keywords "^3.5.2"
 
 "semver@2 || 3 || 4 || 5":
   version "5.7.1"
