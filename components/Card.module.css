@@ -1,6 +1,9 @@
 .card {
-  width: 200px;
+  width: 500px;
   background-color: white;
-  border: 1px solid #ddd;
+  border: 1px solid #d3d3d3;
   padding: 15px;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
 }
