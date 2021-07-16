@@ -1,0 +1,8 @@
+.places {
+  position: absolute;
+  top: 1rem;
+  right: 0%;
+  z-index: 10;
+  width: 100%;
+  max-width: 400px;
+}

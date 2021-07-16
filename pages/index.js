@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
+import Venues from '../components/venues';
 
 import {
   GoogleMap,
@@ -36,6 +37,7 @@ export default function Home() {
   const [directionsOptionsChanged, setDirectionsOptionsChanged] = React.useState(false);
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
+  const [places, setPlaces] = React.useState(null);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -54,7 +56,8 @@ export default function Home() {
           }
         })
         const placesJson = await places.json()
-        // do something with placesJson here
+        setPlaces(placesJson.results)
+        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
@@ -119,6 +122,11 @@ export default function Home() {
           }
         </GoogleMap>
       </LoadScriptNext>
+      {
+        places !== null && (
+          <Venues places={places}></Venues>
+        )
+      }
     </div >
   );
 }
