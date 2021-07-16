@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactStars from "react-rating-stars-component";
+import Image from 'next/image'
 import styles from './Card.module.css'
 
 export default function Card(props) {
@@ -18,7 +19,7 @@ export default function Card(props) {
       edit={false}
     />
     <p>{props.address}</p>
-    <img className={styles.card_image} src={props.photo_link}></img>
+    <Image className={styles.card_image} src={props.photo_link} alt=""></Image>
   </div>
 
 }
