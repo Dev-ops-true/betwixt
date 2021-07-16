@@ -123,7 +123,7 @@ export default function Home() {
       </LoadScriptNext>
       {
         places !== null && (
-          <Venues items={places}></Venues>
+          <Venues places={places}></Venues>
         )
       }
     </div >
