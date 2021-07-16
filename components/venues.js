@@ -8,7 +8,7 @@ export default function Venues({ places }) {
       <ul>
         {
           places.map((place) => (
-            <Card key={place.name} name={place.name} rating={place.rating} address={place.vicinity}></Card>
+            <Card key={place.name} name={place.name} rating={place.rating} address={place.vicinity} ratings_num={place.user_ratings_total}></Card>
           ))
         }
       </ul>
