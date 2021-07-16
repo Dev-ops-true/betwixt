@@ -4,7 +4,7 @@ import styles from './Card.module.css'
 export default function Card(props) {
 
   return <div className={styles.card}>
-    <p>{props.name}</p>
+    <p className={styles.card_title}>{props.name}</p>
     <p>
       <span>{props.rating}</span>
       <span>{`(${props.ratings_num})`}</span>

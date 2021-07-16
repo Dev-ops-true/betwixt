@@ -13,6 +13,10 @@
   background-color: lightgray;
 }
 
+.card_title {
+  font-weight: bold;
+}
+
 .card_image {
   float: right;
 }
