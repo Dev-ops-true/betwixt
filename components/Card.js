@@ -10,6 +10,7 @@ export default function Card(props) {
       <span>{`(${props.ratings_num})`}</span>
     </p>
     <p>{props.address}</p>
+    <p className={styles.card_image}></p>
   </div>
 
 }
