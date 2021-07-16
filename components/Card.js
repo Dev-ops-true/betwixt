@@ -5,8 +5,10 @@ export default function Card(props) {
 
   return <div className={styles.card}>
     <p>{props.name}</p>
-    <p>{props.rating}</p>
-    {/* <p>{props.address}</p> */}
+    <p>
+      <span>{props.rating}</span>
+      <span>{props.hours}</span>
+    </p>
   </div>
 
 }
