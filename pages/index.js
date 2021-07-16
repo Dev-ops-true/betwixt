@@ -120,6 +120,20 @@ export default function Home() {
           }
         </GoogleMap>
       </LoadScriptNext>
+      {
+        places !== null && (
+          <div className={'places'}>
+            <h2>Places</h2>
+            <ul>
+              {
+                places.map((place) => (
+                  <li key={place.name}>{place.name}</li>
+                ))
+              }
+            </ul>
+          </div>
+        )
+      }
     </div >
   );
 }
