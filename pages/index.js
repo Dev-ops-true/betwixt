@@ -52,12 +52,22 @@ export default function Home() {
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setOrigin(event.target.childNodes[0].value);
     setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
     setDirectionsOptionsChanged(true);
+    const response = await fetch(
+      '/api/google', {
+      method: 'POST',
+      body: JSON.stringify(midpoint),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const responseJson = await response.json()
+    console.log(responseJson)
   }
 
   return (
