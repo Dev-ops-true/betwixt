@@ -6,9 +6,10 @@ export default function Card(props) {
   return <div className={styles.card}>
     <p>{props.name}</p>
     <p>
+      {/* <span>{props.num_of_ratings}</span> */}
       <span>{props.rating}</span>
-      <span>{props.hours}</span>
     </p>
+    <p>{props.address}</p>
   </div>
 
 }
