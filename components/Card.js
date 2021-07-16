@@ -10,7 +10,7 @@ export default function Card(props) {
       <span>{`(${props.ratings_num})`}</span>
     </p>
     <p>{props.address}</p>
-    <p className={styles.card_image}></p>
+    <img className={styles.card_image} src={props.photo_link}></img>
   </div>
 
 }
