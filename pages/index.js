@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
+import Venues from '../components/venues';
 
 import {
   GoogleMap,
@@ -122,16 +123,7 @@ export default function Home() {
       </LoadScriptNext>
       {
         places !== null && (
-          <div className={'places'}>
-            <h2>Places</h2>
-            <ul>
-              {
-                places.map((place) => (
-                  <li key={place.name}>{place.name}</li>
-                ))
-              }
-            </ul>
-          </div>
+          <Venues items={places}></Venues>
         )
       }
     </div >
