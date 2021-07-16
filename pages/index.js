@@ -74,10 +74,11 @@ export default function Home() {
   return (
     <div>
       <h1>Betwixt</h1>
-      <SearchBox handleSubmit={handleSubmit} />
       <LoadScriptNext
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
+        libraries={libraries}
       >
+        <SearchBox handleSubmit={handleSubmit} />
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
