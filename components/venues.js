@@ -13,7 +13,8 @@ export default function Venues({ places }) {
               rating={place.rating}
               address={place.vicinity}
               ratings_num={place.user_ratings_total}
-              photo_reference={place.photos[0].photo_reference}></Card>
+              photo_reference={place.photos[0].photo_reference}>
+            </Card>
           ))
         }
       </ul>
