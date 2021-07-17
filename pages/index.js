@@ -57,7 +57,6 @@ export default function Home() {
         })
         const placesJson = await places.json()
         setPlaces(placesJson.results)
-        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
