@@ -37,7 +37,10 @@ export default function Home() {
   const [directionsOptionsChanged, setDirectionsOptionsChanged] = React.useState(false);
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
-  const [places, setPlaces] = React.useState(null);
+  const [restaurants, setRestaurants] = React.useState(null);
+  const [bars, setBars] = React.useState(null);
+  const [cafes, setCafes] = React.useState(null);
+  const [category, setCategory] = React.useState(null);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -50,13 +53,16 @@ export default function Home() {
         const places = await fetch(
           '/api/google', {
           method: 'POST',
-          body: JSON.stringify(midpoint),
+          body: JSON.stringify(midpoint, category),
           headers: {
             "Content-Type": "application/json"
           }
         })
         const placesJson = await places.json()
-        setPlaces(placesJson.results)
+        setRestaurants(placesJson[0].results)
+        setBars(placesJson[1].results)
+        setCafes(placesJson[2].results)
+        console.log(placesJson[1].results)
       } else {
         console.log('response: ', response)
       }
@@ -69,6 +75,7 @@ export default function Home() {
     setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
     setDirectionsOptionsChanged(true);
+    setCategory(event.target.childNodes[3].value);
   }
 
   return (
@@ -122,8 +129,18 @@ export default function Home() {
         </GoogleMap>
       </LoadScriptNext>
       {
-        places !== null && (
-          <Venues places={places}></Venues>
+        (category === 'Restaurant') && (
+          <Venues places={restaurants}></Venues>
+        )
+      }
+      {
+        (category === 'Bar') && (
+          <Venues places={bars}></Venues>
+        )
+      }
+      {
+        (category === 'Cafe') && (
+          <Venues places={cafes}></Venues>
         )
       }
     </div >
