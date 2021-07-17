@@ -4,11 +4,10 @@
   top: 0rem;
   right: 0%;
   width: 100%;
-  max-width: 275px;
+  max-width: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 100vh;
-  padding-left: 1rem;
   
 }
 
