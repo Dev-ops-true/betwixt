@@ -1,46 +1,53 @@
 .card {
-
-  width: 360px;
+  width: 300px;
   background-color: rgb(255, 255, 255);
   border: 1px solid #f1f1f1;
-  padding-left: 25px;
+  padding-left: 35px;
   padding-bottom: 10px;
-  padding-right: 10px;
+  padding-right: 15px;
   box-sizing: inherit;
   display: flexbox;
   overflow: scroll;
   align-items: right;
-  align-self:right;
-  margin: 0 0 0 0px;
-  max-height: 100vh;
+  align-self:left;
+  margin: 0 0 0 -60px;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   background-color: rgb(245, 245, 245);
-}
-
-.card_title {
-  font-family: circular-black;
-  font-size: 1.5em;
-  align: left;
+  border: 1px solid #ffffff;
 }
 
 .card_image {
   float: right;
-  width: 1.2em;
+  width: 1.6em;
   padding-left: 5px;
+}
+
+.card_title {
+  font-family: circular-black;
+  font-size: 1.3em;
+  align: left;
+  margin-bottom: -0.1rem;
 }
 
 .card_address {
   font-family: circular-book;
-  font-size: 1em;
+  font-size: 0.9em;
   color: rgb(128, 128, 128);
 }
 
 .card_ratings_num {
   font-family: circular-book;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: rgb(117, 117, 117);
   letter-spacing: 0.02em;
+  display: inline-flex;
+}
+
+.card_row_two {
+  size-align: center;
+  padding-top: 0.8rem;
+  display: inline-flex;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
+import logo from '../public/logo.png';
 
 import {
   GoogleMap,
