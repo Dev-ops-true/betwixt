@@ -1,14 +1,12 @@
 .card {
   display: flex; 
   flex-direction: row;
-  width: 500px;
-  height: 300px;
+  justify-content: space-between;
+  width: 100%;
+  height: 200px;
   background-color: white;
   border: 1px solid #d3d3d3;
   padding: 15px;
-  box-sizing: border-box;
-  display: block;
-  overflow: hidden;
 }
 
 .card:hover {
@@ -20,6 +18,6 @@
   font-weight: bold;
 }
 
-.card_image {
-  float: right;
+.card_photo {
+  border-radius: 15px;
 }

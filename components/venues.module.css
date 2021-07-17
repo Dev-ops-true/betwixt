@@ -1,8 +1,15 @@
 .places {
+  margin: 0;
   position: absolute;
-  top: 1rem;
+  top: 0;
   right: 0%;
   z-index: 10;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
+  overflow: scroll; 
+  height:100vh;
+}
+
+.places ul {
+  margin: 0;
 }

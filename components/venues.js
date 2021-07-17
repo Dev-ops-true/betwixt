@@ -4,7 +4,6 @@ import styles from './venues.module.css';
 export default function Venues({ places }) {
   return (
     <div className={styles.places}>
-      <h2>Places</h2>
       <ul>
         {
           places.map((place) => (
