@@ -12,6 +12,7 @@ export default async function handler(req, res) {
 
   const jsonResponse = await Promise.all(response.map(r => r.json()))
 
-  res.status(200).json(jsonResponse)
+  const jsonObject = { restaurants: jsonResponse[0], bars: jsonResponse[1], cafes: jsonResponse[2] }
+  res.status(200).json(jsonObject)
   console.log(jsonResponse)
 }

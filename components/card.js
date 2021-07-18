@@ -18,7 +18,7 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
       edit={false}
     />
     <p>{address}</p>
-    <img className={styles.card_image} src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />
+    {photo_reference && <img className={styles.card_image} src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />}
   </div>
 
 }

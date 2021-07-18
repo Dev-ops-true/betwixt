@@ -59,10 +59,10 @@ export default function Home() {
           }
         })
         const placesJson = await places.json()
-        setRestaurants(placesJson[0].results)
-        setBars(placesJson[1].results)
-        setCafes(placesJson[2].results)
-        console.log(placesJson[1].results)
+        setRestaurants(placesJson.restaurants.results)
+        setBars(placesJson.bars.results)
+        setCafes(placesJson.cafes.results)
+        console.log(placesJson)
       } else {
         console.log('response: ', response)
       }
@@ -129,17 +129,17 @@ export default function Home() {
         </GoogleMap>
       </LoadScriptNext>
       {
-        (category === 'Restaurant') && (
+        (category === 'RESTAURANT') && (
           <Venues places={restaurants}></Venues>
         )
       }
       {
-        (category === 'Bar') && (
+        (category === 'BAR') && (
           <Venues places={bars}></Venues>
         )
       }
       {
-        (category === 'Cafe') && (
+        (category === 'CAFE') && (
           <Venues places={cafes}></Venues>
         )
       }
