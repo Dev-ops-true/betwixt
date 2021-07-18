@@ -121,12 +121,16 @@ export default function Home() {
               />
             )
           }
+
+          {
+            places !== null &&
+            (<Markers places={places} />)
+          }
         </GoogleMap>
       </LoadScriptNext>
       {
         places !== null &&
-        (<Venues places={places}></Venues>) && (
-          <Markers places={places} />)
+        (<Venues places={places}></Venues>)
       }
     </div >
   );
