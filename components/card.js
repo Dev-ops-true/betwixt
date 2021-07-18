@@ -18,9 +18,8 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
             isHalf={true}
             edit={false}
           />
-          {`(${ratings_num})`}
+          <span>{`(${ratings_num})`}</span>
         </p>
-        
         <p>{address}</p>
       </div>
       <div>
