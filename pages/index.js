@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
+import Markers from '../components/markers';
 
 import {
   GoogleMap,
@@ -123,9 +124,9 @@ export default function Home() {
         </GoogleMap>
       </LoadScriptNext>
       {
-        places !== null && (
-          <Venues places={places}></Venues>
-        )
+        places !== null &&
+        (<Venues places={places}></Venues>) && (
+          <Markers places={places} />)
       }
     </div >
   );
