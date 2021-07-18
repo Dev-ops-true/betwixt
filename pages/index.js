@@ -37,9 +37,7 @@ export default function Home() {
   const [directionsOptionsChanged, setDirectionsOptionsChanged] = React.useState(false);
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
-  const [restaurants, setRestaurants] = React.useState(null);
-  const [bars, setBars] = React.useState(null);
-  const [cafes, setCafes] = React.useState(null);
+  const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
 
   const directionsCallback = async (response) => {
@@ -53,16 +51,14 @@ export default function Home() {
         const places = await fetch(
           '/api/google', {
           method: 'POST',
-          body: JSON.stringify(midpoint, category),
+          body: JSON.stringify({ midpoint: midpoint, category: category }),
           headers: {
             "Content-Type": "application/json"
           }
         })
         const placesJson = await places.json()
-        setRestaurants(placesJson.restaurants.results)
-        setBars(placesJson.bars.results)
-        setCafes(placesJson.cafes.results)
-        console.log(placesJson)
+        setPlaces(placesJson.results)
+        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
@@ -129,18 +125,8 @@ export default function Home() {
         </GoogleMap>
       </LoadScriptNext>
       {
-        (category === 'RESTAURANT') && (
-          <Venues places={restaurants}></Venues>
-        )
-      }
-      {
-        (category === 'BAR') && (
-          <Venues places={bars}></Venues>
-        )
-      }
-      {
-        (category === 'CAFE') && (
-          <Venues places={cafes}></Venues>
+        category && (
+          <Venues places={places}></Venues>
         )
       }
     </div >
