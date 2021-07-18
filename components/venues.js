@@ -1,4 +1,4 @@
-import Card from '../components/Card';
+import Card from './card';
 import styles from './venues.module.css';
 
 export default function Venues({ places }) {
