@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactStars from "react-rating-stars-component";
 import styles from './Card.module.css'
+import Image from 'next/image'
 
 export default function Card({ name, photo_reference, rating, ratings_num, address }) {
 
@@ -20,5 +21,4 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
     {address && <p>{address}</p>}
     {photo_reference && <img className={styles.card_image} src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />}
   </div>
-
 }

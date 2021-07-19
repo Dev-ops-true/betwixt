@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
+import logo from '../public/logo.png';
 
 import {
   GoogleMap,
@@ -77,10 +78,10 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Betwixt</h1>
+      <h1>betwixt.</h1>
       <SearchBox handleSubmit={handleSubmit} />
       <LoadScriptNext
-        googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
+        googleMapsApiKey="AIzaSyBXlpinTY2iWYVXDuFFbE9PnrPIr7cfNHk"
       >
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
