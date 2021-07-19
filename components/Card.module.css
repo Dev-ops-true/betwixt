@@ -1,4 +1,12 @@
 .card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  background-color: white;
+  border: 1px solid #d3d3d3;
+  padding: 15px;
   width: 300px;
   background-color: rgb(255, 255, 255);
   border: 1px solid #f1f1f1;
@@ -30,6 +38,11 @@
   margin-bottom: -0.1rem;
 }
 
+.card_photo {
+  display: flex;
+  border-radius: 15px;
+  align-content: flex-top;
+  
 .card_address {
   font-family: circular-book;
   font-size: 0.9em;
