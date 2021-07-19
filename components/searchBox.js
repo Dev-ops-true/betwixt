@@ -10,9 +10,9 @@ export default function SearchBox({ handleSubmit }) {
         <option value="TRANSIT">Transit</option>
       </select>
       <select name="category">
-        <option value="RESTAURANT">Restaurant</option>
-        <option value="BAR">Bar</option>
-        <option value="CAFE">Cafe</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="bar">Bar</option>
+        <option value="cafe">Cafe</option>
       </select>
       <button type="submit">Search</button>
     </form>
