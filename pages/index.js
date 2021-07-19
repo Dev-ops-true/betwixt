@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
 import Markers from '../components/markers';
+import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
 
 import {
@@ -41,11 +42,6 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
-  const [currentlySelectedPlace, setCurrentlySelectedPlace] = React.useState(null);
-
-  const cardClickHandle = (place) => {
-    setCurrentlySelectedPlace(place);
-  }
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -131,17 +127,9 @@ export default function Home() {
             )
           }
 
-          {
-            places !== null &&
-            (<Markers currentPlace={currentlySelectedPlace} places={places} />)
-          }
+          <MarkersAndPlaces places={places}/>
         </GoogleMap>
       </LoadScriptNext>
-      {
-        category && (
-          <Venues onClick={cardClickHandle} places={places}></Venues>
-        )
-      }
     </div >
   );
 }
