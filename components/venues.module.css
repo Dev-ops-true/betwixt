@@ -1,15 +1,13 @@
 .places {
-  margin: 0;
+  background-color: white;
   position: absolute;
-  top: 0;
+  top: 0rem;
   right: 0%;
-  z-index: 10;
   width: 100%;
-  max-width: 500px;
-  overflow: scroll; 
-  height:100vh;
+  max-width: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 100vh;
+  
 }
 
-.places ul {
-  margin: 0;
-}

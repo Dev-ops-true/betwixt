@@ -12,6 +12,14 @@ body {
   font-family: circular-black;
   src: url(../public/CircularStd-Black.ttf) format('truetype');
 }
+@font-face {
+  font-family: circular-book;
+  src: url(../public/CircularStd-Book.ttf) format('truetype');
+}
+@font-face {
+  font-family: circular-medium;
+  src: url(../public/CircularStd-Medium.ttf) format('truetype');
+}
 
 a {
   color: inherit;
@@ -24,14 +32,21 @@ a {
 
 h1 {
   font-family: circular-black;
-  font-size: 3rem;
+  font-size: 5rem;
+  letter-spacing: -0.3rem;
   position: absolute;
-  top: 1rem;
-  left: 1.5rem;
+  top: 0.4rem;
+  left: 1.2rem;
   color: rgb(24, 24, 24) ;
   z-index: 10;
   margin: 0;
   padding: 0;
+}
+
+h2 {
+  display: inline-flex;
+  font-family: circular-black;
+  font-size: 1.5rem;
 }
 
 .search {
@@ -43,3 +58,5 @@ h1 {
   width: 100%;
   max-width: 400px;
 }
+
+
