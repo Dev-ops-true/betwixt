@@ -40,7 +40,7 @@ export default function PlacesAutocomplete() {
       getGeocode({ address: description })
         .then((results) => getLatLng(results[0]))
         .then(({ lat, lng }) => {
-          console.log("📍 Coordinates: ", { lat, lng });
+          console.log("📍 Coordinates: ", { lat, lng })
         })
         .catch((error) => {
           console.log("😱 Error: ", error);

@@ -6,8 +6,8 @@ export default function SearchBox({handleSubmit}) {
       {/* <input type="text" name="origin" placeholder="Your post code"/>
       <input type="text" name="destination" placeholder="Your friend's post code"/> */}
 
-      <PlacesAutocomplete />
-      <PlacesAutocomplete />
+      <PlacesAutocomplete/>
+      <PlacesAutocomplete/>
       <select name="travelMode">
         <option value="DRIVING">Driving</option>
         <option value="WALKING">Walking</option>
