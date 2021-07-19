@@ -47,9 +47,19 @@ export default function Home() {
       if (response.status === 'OK') {
         setDirectionsOptionsChanged(false)
         setResponse(response)
-        const midpointIndex = Math.round(response.routes[0].overview_path.length / 2);
-        const midpoint = response.routes[0].overview_path[midpointIndex]
-        setMidpoint(midpoint)
+        const half = response.routes[0].legs[0].duration.value / 2;
+        const arrayHalf = response.routes[0].legs[0].steps.length
+        
+        let halfwaytime = 0;
+
+        for (let i = 0; i < arrayHalf; i++) {
+         halfwaytime += response.routes[0].legs[0].steps[i].duration.value
+         if (halfwaytime >= half) { 
+          setMidpoint(response.routes[0].legs[0].steps[i].lat_lngs[0])
+          i =  arrayHalf
+         }
+       }   
+        
         const places = await fetch(
           '/api/google', {
           method: 'POST',
