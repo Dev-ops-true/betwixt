@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 import styles from './Card.module.css'
 import Image from 'next/image'
 
-export default function cardModal({ name, photo_reference, rating, ratings_num, address, onClick }) {
+export default function card({ name, photo_reference, rating, ratings_num, address, onClick }) {
 
   return (
     <div className={styles.card} onClick={onClick}>
