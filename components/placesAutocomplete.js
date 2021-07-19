@@ -4,7 +4,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 
-export default function PlacesAutocomplete() {
+export default function PlacesAutocomplete({setPlace}) {
   const {
     ready,
     value,
@@ -40,7 +40,7 @@ export default function PlacesAutocomplete() {
       getGeocode({ address: description })
         .then((results) => getLatLng(results[0]))
         .then(({ lat, lng }) => {
-          console.log("📍 Coordinates: ", { lat, lng })
+          setPlace({ lat, lng });
         })
         .catch((error) => {
           console.log("😱 Error: ", error);
