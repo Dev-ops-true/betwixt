@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
+import Markers from '../components/markers';
 import logo from '../public/logo.png';
 
 import {
@@ -123,6 +124,11 @@ export default function Home() {
                 title="Midpoint"
               />
             )
+          }
+
+          {
+            places !== null &&
+            (<Markers places={places} />)
           }
         </GoogleMap>
       </LoadScriptNext>
