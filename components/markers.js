@@ -2,7 +2,7 @@ import { Marker, InfoWindow } from '@react-google-maps/api';
 import { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
 
-export default function Markers({ places }) {
+export default function Markers({ places, currentPlace }) {
   const [open, setOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
 
@@ -22,25 +22,25 @@ export default function Markers({ places }) {
         places.map(place => {
           return (
             <Marker key={place.place_id} position={place.geometry.location} title={place.name} onMouseOver={() => mouseOverHandler(place)} onMouseOut={() => mouseOutHandler}>
-              {open && selectedPlace && selectedPlace.name === place.name && (
+              {((open && selectedPlace && selectedPlace.name === place.name) || (currentPlace === place.name)) && (
                 <InfoWindow
-                  position={selectedPlace.vicinity}
+                  position={place.vicinity}
                   onCloseClick={() => mouseOutHandler}
                 >
                   <div>
-                    <p>{selectedPlace.name}</p>
+                    <p>{place.name}</p>
                     <p>
-                      {selectedPlace.rating}
+                      {place.rating}
                       <ReactStars
                         size={20}
                         max={5}
-                        value={selectedPlace.rating}
+                        value={place.rating}
                         isHalf={true}
                         edit={false}
                       />
-                      {`(${selectedPlace.user_ratings_total})`}
+                      {`(${place.user_ratings_total})`}
                     </p>
-                    <p>{selectedPlace.vicinity}</p>
+                    <p>{place.vicinity}</p>
                   </div>
                 </InfoWindow>
               )

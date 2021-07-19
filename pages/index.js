@@ -41,6 +41,11 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
+  const [currentlySelectedPlace, setCurrentlySelectedPlace] = React.useState(null);
+
+  const cardClickHandle = (place) => {
+    setCurrentlySelectedPlace(place);
+  }
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -128,13 +133,13 @@ export default function Home() {
 
           {
             places !== null &&
-            (<Markers places={places} />)
+            (<Markers currentPlace={currentlySelectedPlace} places={places} />)
           }
         </GoogleMap>
       </LoadScriptNext>
       {
         category && (
-          <Venues places={places}></Venues>
+          <Venues onClick={cardClickHandle} places={places}></Venues>
         )
       }
     </div >

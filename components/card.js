@@ -3,10 +3,10 @@ import ReactStars from "react-rating-stars-component";
 import styles from './Card.module.css'
 import Image from 'next/image'
 
-export default function Card({ name, photo_reference, rating, ratings_num, address }) {
+export default function Card({ name, photo_reference, rating, ratings_num, address, onClick }) {
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onMouseOver={() => { onClick(name) }} onMouseOut={() => { onClick(null) }}  >
       <div className={styles.card_info}>
         <p className={styles.card_title}>{name}</p>
         <p>
@@ -20,7 +20,7 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
           />
           {`(${ratings_num})`}
         </p>
-        
+
         <p>{address}</p>
       </div>
       <div>
