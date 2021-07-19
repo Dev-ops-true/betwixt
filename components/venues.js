@@ -4,7 +4,12 @@ import styles from './venues.module.css';
 export default function Venues({ places }) {
   return (
     <div className={styles.places}>
-      <h2>Places</h2>
+      <h2>Your places.</h2>
+      <select name="sortby">
+        <option value="Recommended">Recommended</option>
+        <option value="Closest">Closest</option>
+        <option value="Rating">Rating</option>
+      </select>
       <ul>
         {
           places.map((place) => (
