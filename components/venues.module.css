@@ -4,10 +4,9 @@
   top: 0rem;
   right: 0%;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   overflow-y: scroll;
   overflow-x: hidden;
   max-height: 100vh;
-  
 }
 
