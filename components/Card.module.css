@@ -10,7 +10,7 @@
   /* width: 300px; */
   background-color: rgb(255, 255, 255);
   border: 1px solid #f1f1f1;
-  padding-left: 25px;
+  padding-left: 60px;
   padding-bottom: 10px;
   padding-right: 15px;
   box-sizing: inherit;
@@ -43,7 +43,7 @@
   border-radius: 15px;
   align-content: flex-top;
 }
-  
+
 .card_address {
   font-family: circular-book;
   font-size: 0.9em;
