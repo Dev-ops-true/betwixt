@@ -18,7 +18,8 @@ export default function Venues({ places }) {
               rating={place.rating}
               address={place.vicinity}
               ratings_num={place.user_ratings_total}
-              photo_reference={place.photos && place.photos[0].photo_reference}>
+              photo_reference={place.photos && place.photos[0].photo_reference}
+              onClick={() => openModal(place)}>
             </Card>
           ))
         }
