@@ -10,7 +10,7 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
       <div className={styles.card_info}>
         <p className={styles.card_title}>{name}</p>
         <p>
-          {rating}
+          {rating || 'No reviews'}
           <ReactStars
             size={20}
             max={5}
@@ -18,7 +18,7 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
             isHalf={true}
             edit={false}
           />
-          {`(${ratings_num})`}
+          {`(${ratings_num || 0})`}
         </p>
 
         <p>{address}</p>
