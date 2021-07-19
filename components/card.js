@@ -5,26 +5,20 @@ import Image from 'next/image'
 
 export default function Card({ name, photo_reference, rating, ratings_num, address }) {
 
-  return (
-    <div className={styles.card}>
-      <div className={styles.card_info}>
-        <p className={styles.card_title}>{name}</p>
-        <p>
-          {rating}
-          <ReactStars
-            size={20}
-            max={5}
-            value={rating}
-            isHalf={true}
-            edit={false}
-          />
-          <span>{`(${ratings_num})`}</span>
-        </p>
-        <p>{address}</p>
-      </div>
-      <div>
-        <Image className={styles.card_photo} width={100} height={100} alt='Venue image' src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />
-      </div>
-    </div>
-  )
+  return <div className={styles.card}>
+    {name && <p className={styles.card_title}>{name}</p>}
+    <p>
+      {rating && <span>{rating}</span>}
+      {ratings_num && <span>{`(${ratings_num})`}</span>}
+    </p>
+    {rating && <ReactStars
+      size={20}
+      max={5}
+      value={rating}
+      isHalf={true}
+      edit={false}
+    />}
+    {address && <p>{address}</p>}
+    {photo_reference && <img className={styles.card_image} src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />}
+  </div>
 }

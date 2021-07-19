@@ -39,6 +39,7 @@ export default function Home() {
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
+  const [category, setCategory] = React.useState(null);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -51,13 +52,15 @@ export default function Home() {
         const places = await fetch(
           '/api/google', {
           method: 'POST',
-          body: JSON.stringify(midpoint),
+          body: JSON.stringify({ midpoint: midpoint, category: category }),
           headers: {
             "Content-Type": "application/json"
           }
         })
         const placesJson = await places.json()
+        placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
+        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
@@ -70,6 +73,7 @@ export default function Home() {
     setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
     setDirectionsOptionsChanged(true);
+    setCategory(event.target.childNodes[3].value);
   }
 
   return (
@@ -123,7 +127,7 @@ export default function Home() {
         </GoogleMap>
       </LoadScriptNext>
       {
-        places !== null && (
+        category && (
           <Venues places={places}></Venues>
         )
       }
