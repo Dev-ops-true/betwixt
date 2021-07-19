@@ -13,6 +13,11 @@ export default function SearchBox({setOrigin, setDestination, handleSubmit}) {
         <option value="BICYCLING">Bicycling</option>
         <option value="TRANSIT">Transit</option>
       </select>
+      <select name="category">
+        <option value="restaurant">Restaurant</option>
+        <option value="bar">Bar</option>
+        <option value="cafe">Cafe</option>
+      </select>
       <button type="submit">Search</button>
     </form>
   )

@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
+import Markers from '../components/markers';
+import logo from '../public/logo.png';
 
 import {
   GoogleMap,
@@ -38,6 +40,7 @@ export default function Home() {
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
+  const [category, setCategory] = React.useState(null);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -50,13 +53,15 @@ export default function Home() {
         const places = await fetch(
           '/api/google', {
           method: 'POST',
-          body: JSON.stringify(midpoint),
+          body: JSON.stringify({ midpoint: midpoint, category: category }),
           headers: {
             "Content-Type": "application/json"
           }
         })
         const placesJson = await places.json()
+        placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
+        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
@@ -67,11 +72,12 @@ export default function Home() {
     event.preventDefault();
     setTravelMode(event.target.childNodes[2].value);
     setDirectionsOptionsChanged(true);
+    setCategory(event.target.childNodes[3].value);
   }
 
   return (
     <div>
-      <h1>Betwixt</h1>
+      <h1>betwixt.</h1>
       <LoadScriptNext
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
@@ -118,10 +124,15 @@ export default function Home() {
               />
             )
           }
+
+          {
+            places !== null &&
+            (<Markers places={places} />)
+          }
         </GoogleMap>
       </LoadScriptNext>
       {
-        places !== null && (
+        category && (
           <Venues places={places}></Venues>
         )
       }
