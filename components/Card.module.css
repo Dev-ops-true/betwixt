@@ -7,14 +7,14 @@
   background-color: white;
   border: 1px solid #d3d3d3;
   padding: 15px;
-  width: 300px;
+  /* width: 300px; */
   background-color: rgb(255, 255, 255);
   border: 1px solid #f1f1f1;
   padding-left: 25px;
   padding-bottom: 10px;
   padding-right: 15px;
   box-sizing: inherit;
-  display: flexbox;
+  /* display: flexbox; */
   overflow: scroll;
   margin: 0 0 0 -40px;
 }
@@ -43,7 +43,7 @@
   border-radius: 15px;
   align-content: flex-top;
 }
-
+  
 .card_address {
   font-family: circular-book;
   font-size: 0.9em;
