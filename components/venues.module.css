@@ -3,8 +3,9 @@
   position: fixed;
   right: 0vw;
   width: 100%;
-  max-width: 25vw;
+  max-width: 30vw;
   overflow-y: scroll;
   max-height: 100vh;
+  
 }
 

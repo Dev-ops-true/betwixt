@@ -24,7 +24,7 @@ const mapContainerStyleInitial = {
 };
 
 const mapContainerStyleAfterSubmit = {
-  width: '75vw',
+  width: '70vw',
   height: '100vh',
 
 }

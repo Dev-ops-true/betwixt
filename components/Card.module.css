@@ -1,22 +1,14 @@
 .card {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 25vw;
+  width: 30vw;
   border: 1px solid rgb(245, 245, 245);
   background-color: white;
   padding-left: 18px;
   padding-bottom: 8px;
   padding-right: 10px;
-  border: 1px solid #d3d3d3;
-  padding: 15px;
-  /* width: 300px; */
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #f1f1f1;
-  box-sizing: inherit;
-  /* display: flexbox; */
   overflow: scroll;
-  margin: 0 0 0 -2.7vw;
+  margin: 0 0 0 -2.8vw;
 }
 
 .card:hover {
@@ -33,37 +25,54 @@
 
 .card_title {
   font-family: circular-black;
-  font-size: 1.3em;
+  font-size: 1.5em;
   align: left;
   margin-bottom: -0.1rem;
 }
 
+.card_rating {
+  font-family: circular-book;
+  font-size: 1em;
+  color: rgb(117, 117, 117);
+}
+
 .card_photo {
-  display: flex;
   border-radius: 8px;
-  align-content: flex-top;
 }
 
 .card_address {
   font-family: circular-book;
-  font-size: 0.9em;
+  font-size: 1em;
   color: rgb(128, 128, 128);
 }
 
 .card_ratings_num {
   font-family: circular-book;
-  font-size: 0.7em;
+  font-size: 0.8em;
   color: rgb(117, 117, 117);
   letter-spacing: 0.02em;
-  display: inline-flex;
-}
-
-.card_row_two {
-  size-align: center;
-  padding-top: 0.8rem;
-  display: inline-flex;
 }
 
 .closed {
   color: red;
+  font-family: circular-medium;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+}
+
+.open {
+  color: green;
+  font-family: circular-medium;
+  font-size: 0.7em;
+  letter-spacing: 0.1em;
+}
+
+.card_distance {
+  font-family: circular-book;
+  font-size: 1em;
+  color: rgb(128, 128, 128);
+}
+
+.card_stars {
+  top: 1em;
 }
