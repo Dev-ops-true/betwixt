@@ -1,7 +1,9 @@
 import Card from './card';
 import styles from './venues.module.css';
 
-export default function Venues({ places }) {
+export default function Venues({ places, onClick }) {
+
+
   return (
     <div className={styles.places}>
       <h2>Your places.</h2>
@@ -18,8 +20,8 @@ export default function Venues({ places }) {
               rating={place.rating}
               address={place.vicinity}
               ratings_num={place.user_ratings_total}
-              photo_reference={place.photos && place.photos[0].photo_reference}>
-            </Card>
+              photo_reference={place.photos && place.photos[0].photo_reference}
+              onClick={onClick} />
           ))
         }
       </ul>
