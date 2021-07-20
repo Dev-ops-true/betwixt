@@ -4,6 +4,7 @@ import Venues from '../components/venues';
 import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
+import CircleComponent from "../components/circle";
 
 import {
   GoogleMap,
@@ -17,10 +18,16 @@ import mapStyles from "../mapStyles";
 
 const libraries = ["places"];
 
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+const mapContainerStyleInitial = {
+  width: '100vw',
+  height: '100vh',
 };
+
+const mapContainerStyleAfterSubmit = {
+  width: '75vw',
+  height: '100vh',
+
+}
 
 const center = {
   lat: 51.5084,
@@ -42,6 +49,7 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
+  const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -79,12 +87,14 @@ export default function Home() {
         console.log('response: ', response)
       }
     }
+
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setTravelMode(event.target.childNodes[2].value);
     setCategory(event.target.childNodes[3].value);
+    setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
 
@@ -99,7 +109,7 @@ export default function Home() {
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
-          center={center}
+          center={midpoint || center}
           options={options}
         >
           {
@@ -131,14 +141,20 @@ export default function Home() {
 
           {
             midpoint !== null && (
-              <Marker
-                position={midpoint}
-                title="Midpoint"
-              />
-            )
-          }
+              <div>
+                <Marker
+                    position={midpoint}
+                    title="Midpoint"
+                />
+                <CircleComponent
+                    midPoint={midpoint}
+                    radius={1500}
+                />
+              </div>
+
 
           <MarkersAndPlaces places={places} />
+
         </GoogleMap>
       </LoadScriptNext>
     </div >
