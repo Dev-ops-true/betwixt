@@ -63,7 +63,8 @@ export default function Venues({ places, onMouseOver }) {
               ratings_num={place.user_ratings_total}
               photo_reference={place.photos && place.photos[0].photo_reference}
               onClick={() => openModal(place)}
-              onMouseOver={onMouseOver}>
+              onMouseOver={onMouseOver}
+              open_now={place.opening_hours?.open_now}>
             </Card>
           ))
         }

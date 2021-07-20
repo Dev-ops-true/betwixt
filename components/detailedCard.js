@@ -50,9 +50,12 @@ export default function DetailedCard({ place_id, photo_reference }) {
               </div >
               <div>
                 <p>{`Address: ${activePlace.formatted_address}`}</p>
+                {
+                  activePlace.opening_hours?.open_now ? <p>Open now</p> : <p className={styles.closed}>Closed</p>
+                }
                 <Collapsible trigger="Opening Hours &#9660;">
                   {
-                    activePlace.opening_hours.weekday_text.map((dayHours) => {
+                    activePlace.opening_hours?.weekday_text.map((dayHours) => {
                       return <p key={dayHours}>{dayHours}</p>
                     })
                   }
