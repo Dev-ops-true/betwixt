@@ -63,3 +63,7 @@
   padding-top: 0.8rem;
   display: inline-flex;
 }
+
+.closed {
+  color: red;
+}

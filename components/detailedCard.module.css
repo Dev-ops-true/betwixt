@@ -55,3 +55,7 @@
   letter-spacing: 0.02em;
   display: inline-flex;
 }
+
+.closed {
+  color: red;
+}
