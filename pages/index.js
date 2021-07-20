@@ -4,6 +4,7 @@ import Venues from '../components/venues';
 import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
+import CircleComponent from "../components/circle";
 
 import {
   GoogleMap,
@@ -86,6 +87,7 @@ export default function Home() {
         console.log('response: ', response)
       }
     }
+
   }
 
   const handleSubmit = (event) => {
@@ -139,14 +141,24 @@ export default function Home() {
 
           {
             midpoint !== null && (
-              <Marker
-                position={midpoint}
-                title="Midpoint"
-              />
-            )
-          }
+              <div>
+                <Marker
+                    position={midpoint}
+                    title="Midpoint"
+                />
+                <CircleComponent
+                    midPoint={midpoint}
+                    radius={1500}
+                />
+              </div>
 
-          <MarkersAndPlaces places={places}/>
+
+          )
+        }
+          {
+            places !== null &&
+            (<Markers places={places} />)
+          }
         </GoogleMap>
       </LoadScriptNext>
     </div >
