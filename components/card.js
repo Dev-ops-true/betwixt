@@ -18,13 +18,13 @@ export default function card({ name, photo_reference, rating, ratings_num, addre
             isHalf={true}
             edit={false}
           />
-          {`(${ratings_num})`}
+          <span className={styles.card_ratings_num} >{`${ratings_num || 'No'} reviews`}</span>
         </p>
 
-        <p>{address}</p>
+        <p className={styles.card_ratings_num}>{address}</p>
       </div>
       <div>
-        <Image className={styles.card_photo} width={100} height={100} alt='Venue image' src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />
+        {photo_reference && <Image className={styles.card_photo} width={100} height={100} alt='Venue image' src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />}
       </div>
     </div>
   )
