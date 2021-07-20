@@ -4,6 +4,7 @@ import Venues from '../components/venues';
 import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
+import CircleComponent from "../components/circle";
 
 import {
   GoogleMap,
@@ -17,10 +18,16 @@ import mapStyles from "../mapStyles";
 
 const libraries = ["places"];
 
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+const mapContainerStyleInitial = {
+  width: '100vw',
+  height: '100vh',
 };
+
+const mapContainerStyleAfterSubmit = {
+  width: '75vw',
+  height: '100vh',
+
+}
 
 const center = {
   lat: 51.5084,
@@ -42,13 +49,14 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
+  const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
       if (response.status === 'OK') {
         setDirectionsOptionsChanged(false);
         setResponse(response);
-
+        console.log(response);
         const currentJourney = response.routes[0].legs[0];
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
         let currentTotalDuration = 0;
@@ -56,13 +64,13 @@ export default function Home() {
 
         for (let i = 0; i < currentJourney.steps.length; i++) {
           currentTotalDuration += currentJourney.steps[i].duration.value;
-          if (currentTotalDuration >= currentJourneyHalfDuration) { 
+          if (currentTotalDuration >= currentJourneyHalfDuration) {
             midpoint = currentJourney.steps[i].lat_lngs[0];
             setMidpoint(midpoint);
             break;
           }
         }
-        
+
         const places = await fetch(
           '/api/google', {
           method: 'POST',
@@ -85,6 +93,7 @@ export default function Home() {
     event.preventDefault();
     setTravelMode(event.target.childNodes[2].value);
     setCategory(event.target.childNodes[3].value);
+    setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
 
@@ -99,7 +108,7 @@ export default function Home() {
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
-          center={center}
+          center={midpoint || center}
           options={options}
         >
           {
@@ -131,14 +140,23 @@ export default function Home() {
 
           {
             midpoint !== null && (
-              <Marker
-                position={midpoint}
-                title="Midpoint"
-              />
+              <>
+                <Marker
+                  position={midpoint}
+                  title="Midpoint"
+                />
+                <CircleComponent
+                  midPoint={midpoint}
+                  radius={1500}
+                />
+              </>
             )
           }
-
-          <MarkersAndPlaces midpoint={midpoint} places={places}/>
+          {
+            places !== null && (
+               <MarkersAndPlaces midpoint={midpoint} places={places}/>
+            )
+          }
         </GoogleMap>
       </LoadScriptNext>
     </div >

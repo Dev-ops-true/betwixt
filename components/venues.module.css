@@ -1,12 +1,10 @@
 .places {
   background-color: white;
-  position: absolute;
-  top: 0rem;
-  right: 0%;
+  position: fixed;
+  right: 0vw;
   width: 100%;
-  max-width: 500px;
+  max-width: 25vw;
   overflow-y: scroll;
-  overflow-x: hidden;
   max-height: 100vh;
 }
 

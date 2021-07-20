@@ -86,7 +86,8 @@ export default function Venues({ places, midpoint, onMouseOver }) {
               distance={getDistance(place.geometry.location, midpoint)}
               photo_reference={place.photos && place.photos[0].photo_reference}
               onClick={() => openModal(place)}
-              onMouseOver={onMouseOver}>
+              onMouseOver={onMouseOver}
+              open_now={place.opening_hours?.open_now}>
             </Card>
           ))
         }

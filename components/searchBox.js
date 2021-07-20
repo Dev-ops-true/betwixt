@@ -10,7 +10,7 @@ export default function SearchBox({setOrigin, setDestination, handleSubmit}) {
       <select name="travelMode">
         <option value="DRIVING">Driving</option>
         <option value="WALKING">Walking</option>
-        <option value="BICYCLING">Bicycling</option>
+        <option value="BICYCLING">Cycling</option>
         <option value="TRANSIT">Transit</option>
       </select>
       <select name="category">
