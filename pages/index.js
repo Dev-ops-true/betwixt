@@ -17,10 +17,16 @@ import mapStyles from "../mapStyles";
 
 const libraries = ["places"];
 
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+const mapContainerStyleInitial = {
+  width: '100vw',
+  height: '100vh',
 };
+
+const mapContainerStyleAfterSubmit = {
+  width: '75vw',
+  height: '100vh',
+
+}
 
 const center = {
   lat: 51.5084,
@@ -42,6 +48,7 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
+  const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
@@ -85,6 +92,7 @@ export default function Home() {
     event.preventDefault();
     setTravelMode(event.target.childNodes[2].value);
     setCategory(event.target.childNodes[3].value);
+    setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
 
@@ -99,7 +107,7 @@ export default function Home() {
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
-          center={center}
+          center={midpoint || center}
           options={options}
         >
           {
