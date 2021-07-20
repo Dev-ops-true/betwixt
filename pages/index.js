@@ -87,7 +87,6 @@ export default function Home() {
         console.log('response: ', response)
       }
     }
-
   }
 
   const handleSubmit = (event) => {
@@ -141,20 +140,23 @@ export default function Home() {
 
           {
             midpoint !== null && (
-              <div>
+              <>
                 <Marker
-                    position={midpoint}
-                    title="Midpoint"
+                  position={midpoint}
+                  title="Midpoint"
                 />
                 <CircleComponent
-                    midPoint={midpoint}
-                    radius={1500}
+                  midPoint={midpoint}
+                  radius={1500}
                 />
-              </div>
-
-
-          <MarkersAndPlaces places={places} />
-
+              </>
+            )
+          }
+          {
+            places !== null && (
+              <MarkersAndPlaces places={places}/>
+            )
+          }
         </GoogleMap>
       </LoadScriptNext>
     </div >
