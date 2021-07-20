@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Card from './card';
+import DetailedCard from './detailedCard';
 import styles from './venues.module.css';
 import Modal from 'react-modal';
 import { Autocomplete } from '@react-google-maps/api';
@@ -73,14 +74,10 @@ export default function Venues({ places }) {
         style={customStyles}
         contentLabel="Example Modal">
         {
-          activeCard && <Card key={activeCard.name}
-            name={activeCard.name}
-            rating={activeCard.rating}
-            address={activeCard.vicinity}
-            ratings_num={activeCard.user_ratings_total}
-            photo_reference={activeCard.photos && activeCard.photos[0].photo_reference}
-            onClick={() => openModal(activeCard)}>
-          </Card>
+          activeCard && <DetailedCard
+            place_id={activeCard.place_id}
+            photo_reference={activeCard.photos && activeCard.photos[0].photo_reference}>
+          </DetailedCard>
         }
         <button className="button" onClick={closeModal}>close</button>
       </Modal>
