@@ -83,6 +83,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
               rating={place.rating}
               address={place.vicinity}
               ratings_num={place.user_ratings_total}
+              distance={getDistance(place.geometry.location, midpoint)}
               photo_reference={place.photos && place.photos[0].photo_reference}
               onClick={() => openModal(place)}
               onMouseOver={onMouseOver}>
