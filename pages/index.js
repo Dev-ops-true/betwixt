@@ -56,7 +56,7 @@ export default function Home() {
       if (response.status === 'OK') {
         setDirectionsOptionsChanged(false);
         setResponse(response);
-
+        console.log(response);
         const currentJourney = response.routes[0].legs[0];
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
         let currentTotalDuration = 0;
@@ -64,13 +64,13 @@ export default function Home() {
 
         for (let i = 0; i < currentJourney.steps.length; i++) {
           currentTotalDuration += currentJourney.steps[i].duration.value;
-          if (currentTotalDuration >= currentJourneyHalfDuration) { 
+          if (currentTotalDuration >= currentJourneyHalfDuration) {
             midpoint = currentJourney.steps[i].lat_lngs[0];
             setMidpoint(midpoint);
             break;
           }
         }
-        
+
         const places = await fetch(
           '/api/google', {
           method: 'POST',
@@ -153,12 +153,8 @@ export default function Home() {
               </div>
 
 
-          )
-        }
-          {
-            places !== null &&
-            (<Markers places={places} />)
-          }
+          <MarkersAndPlaces places={places} />
+
         </GoogleMap>
       </LoadScriptNext>
     </div >
