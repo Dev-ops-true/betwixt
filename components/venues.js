@@ -22,7 +22,7 @@ const customStyles = {
   },
 };
 
-export default function Venues({ places }) {
+export default function Venues({ places, onClick }) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [activeCard, setActiveCard] = useState(null);

@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
 import Markers from '../components/markers';
+import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
 
 import {
@@ -45,20 +46,22 @@ export default function Home() {
   const directionsCallback = async (response) => {
     if (response !== null) {
       if (response.status === 'OK') {
-        setDirectionsOptionsChanged(false)
-        setResponse(response)
-        const half = response.routes[0].legs[0].duration.value / 2;
-        const arrayHalf = response.routes[0].legs[0].steps.length
-        
-        let halfwaytime = 0;
+        setDirectionsOptionsChanged(false);
+        setResponse(response);
 
-        for (let i = 0; i < arrayHalf; i++) {
-         halfwaytime += response.routes[0].legs[0].steps[i].duration.value
-         if (halfwaytime >= half) { 
-          setMidpoint(response.routes[0].legs[0].steps[i].lat_lngs[0])
-          i =  arrayHalf
-         }
-       }   
+        const currentJourney = response.routes[0].legs[0];
+        const currentJourneyHalfDuration = currentJourney.duration.value / 2;
+        let currentTotalDuration = 0;
+        let midpoint;
+
+        for (let i = 0; i < currentJourney.steps.length; i++) {
+          currentTotalDuration += currentJourney.steps[i].duration.value;
+          if (currentTotalDuration >= currentJourneyHalfDuration) { 
+            midpoint = currentJourney.steps[i].lat_lngs[0];
+            setMidpoint(midpoint);
+            break;
+          }
+        }
         
         const places = await fetch(
           '/api/google', {
@@ -81,8 +84,8 @@ export default function Home() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setTravelMode(event.target.childNodes[2].value);
-    setDirectionsOptionsChanged(true);
     setCategory(event.target.childNodes[3].value);
+    setDirectionsOptionsChanged(true);
   }
 
   return (
@@ -135,17 +138,9 @@ export default function Home() {
             )
           }
 
-          {
-            places !== null &&
-            (<Markers places={places} />)
-          }
+          <MarkersAndPlaces places={places}/>
         </GoogleMap>
       </LoadScriptNext>
-      {
-        category && (
-          <Venues places={places}></Venues>
-        )
-      }
     </div >
   );
 }
