@@ -5,7 +5,7 @@ import React from 'react'
 export default function MarkersAndPlaces({places}) {
   const [currentlySelectedPlace, setCurrentlySelectedPlace] = React.useState(null);
 
-  const cardClickHandle = (place) => {
+  const cardMouseOverHandler = (place) => {
     setCurrentlySelectedPlace(place);
   }
 
@@ -18,7 +18,7 @@ export default function MarkersAndPlaces({places}) {
       }
       {
         places !== null && (
-          <Venues onClick={cardClickHandle} places={places} />
+          <Venues onMouseOver={cardMouseOverHandler} places={places} />
         )
       }
     </>

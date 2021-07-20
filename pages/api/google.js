@@ -10,5 +10,4 @@ export default async function handler(req, res) {
   const jsonResponse = await response.json()
 
   res.status(200).json(jsonResponse)
-  console.log(jsonResponse)
 }

@@ -13,8 +13,10 @@
     "@react-google-maps/api": "^2.2.0",
     "next": "11.0.1",
     "react": "17.0.2",
+    "react-collapsible": "^2.8.3",
     "react-cool-onclickoutside": "^1.6.2",
     "react-dom": "17.0.2",
+    "react-modal": "^3.14.3",
     "react-rating-stars-component": "^2.2.0",
     "use-places-autocomplete": "^1.9.3",
     "yarn": "^1.22.10"

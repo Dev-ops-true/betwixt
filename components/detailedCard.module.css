@@ -7,14 +7,12 @@
   background-color: white;
   border: 1px solid #d3d3d3;
   padding: 15px;
-  /* width: 300px; */
   background-color: rgb(255, 255, 255);
   border: 1px solid #f1f1f1;
-  padding-left: 60px;
+  padding-left: 100px;
   padding-bottom: 10px;
   padding-right: 15px;
   box-sizing: inherit;
-  /* display: flexbox; */
   overflow: scroll;
   margin: 0 0 0 -40px;
 }
@@ -55,11 +53,5 @@
   font-size: 0.7em;
   color: rgb(117, 117, 117);
   letter-spacing: 0.02em;
-  display: inline-flex;
-}
-
-.card_row_two {
-  size-align: center;
-  padding-top: 0.8rem;
   display: inline-flex;
 }
