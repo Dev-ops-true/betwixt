@@ -1,0 +1,59 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  background-color: white;
+  border: 1px solid #d3d3d3;
+  padding: 15px;
+  /* width: 300px; */
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #f1f1f1;
+  padding-left: 100px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  box-sizing: inherit;
+  /* display: flexbox; */
+  overflow: scroll;
+  margin: 0 0 0 -40px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(245, 245, 245);
+  border: 1px solid #ffffff;
+}
+
+.card_image {
+  float: right;
+  width: 1.6em;
+  padding-left: 5px;
+}
+
+.card_title {
+  font-family: circular-black;
+  font-size: 1.3em;
+  align: left;
+  margin-bottom: -0.1rem;
+}
+
+.card_photo {
+  display: flex;
+  border-radius: 15px;
+  align-content: flex-top;
+}
+
+.card_address {
+  font-family: circular-book;
+  font-size: 0.9em;
+  color: rgb(128, 128, 128);
+}
+
+.card_ratings_num {
+  font-family: circular-book;
+  font-size: 0.7em;
+  color: rgb(117, 117, 117);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+}
