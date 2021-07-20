@@ -22,7 +22,7 @@ const customStyles = {
   },
 };
 
-export default function Venues({ places, onClick }) {
+export default function Venues({ places, onMouseOver }) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
@@ -62,7 +62,8 @@ export default function Venues({ places, onClick }) {
               address={place.vicinity}
               ratings_num={place.user_ratings_total}
               photo_reference={place.photos && place.photos[0].photo_reference}
-              onClick={() => openModal(place)}>
+              onClick={() => openModal(place)}
+              onMouseOver={onMouseOver}>
             </Card>
           ))
         }
