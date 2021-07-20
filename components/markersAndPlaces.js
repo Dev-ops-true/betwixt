@@ -2,7 +2,7 @@ import Markers from "./markers"
 import Venues from "./venues"
 import React from 'react'
 
-export default function MarkersAndPlaces({places}) {
+export default function MarkersAndPlaces({places, midpoint}) {
   const [currentlySelectedPlace, setCurrentlySelectedPlace] = React.useState(null);
 
   const cardMouseOverHandler = (place) => {
@@ -18,7 +18,7 @@ export default function MarkersAndPlaces({places}) {
       }
       {
         places !== null && (
-          <Venues onMouseOver={cardMouseOverHandler} places={places} />
+          <Venues onMouseOver={cardMouseOverHandler} places={places} midpoint={midpoint} />
         )
       }
     </>

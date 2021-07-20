@@ -154,7 +154,7 @@ export default function Home() {
           }
           {
             places !== null && (
-              <MarkersAndPlaces places={places}/>
+               <MarkersAndPlaces midpoint={midpoint} places={places}/>
             )
           }
         </GoogleMap>

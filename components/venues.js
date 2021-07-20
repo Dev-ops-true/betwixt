@@ -22,10 +22,11 @@ const customStyles = {
   },
 };
 
-export default function Venues({ places, onMouseOver }) {
+export default function Venues({ places, midpoint, onMouseOver }) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
+  const [sortBy, setSortBy] = useState('Rating');
 
   const openModal = (place) => {
     setIsOpen(true);
@@ -45,22 +46,44 @@ export default function Venues({ places, onMouseOver }) {
     setIsOpen(false);
   }
 
+  const rad = (x) => {
+    return x * Math.PI / 180;
+  };
+  
+  const getDistance = (p1, p2) => {
+    const R = 6378137; // Earth’s mean radius in meter
+    const dLat = rad(p2.lat() - p1.lat);
+    const dLong = rad(p2.lng() - p1.lng);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat())) *
+      Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+    return d; // returns the distance in meter
+  };
+
   return (
     <div className={styles.places}>
       <h2>Your places.</h2>
-      <select name="sortby">
-        <option value="Recommended">Recommended</option>
-        <option value="Closest">Closest</option>
+      <select name="sortby" onChange={(e) => setSortBy(e.target.value)}>
         <option value="Rating">Rating</option>
+        <option value="Closest">Closest</option>
       </select>
       <ul>
         {
-          places && places.map((place) => (
+          places && places.sort((place, nextPlace) => {
+            if (sortBy === 'Rating') {
+              return nextPlace.rating - place.rating;
+            } else if (sortBy === 'Closest') {
+              return getDistance(place.geometry.location, midpoint) - getDistance(nextPlace.geometry.location, midpoint);
+            }
+          }).map((place) => (
             <Card key={place.name}
               name={place.name}
               rating={place.rating}
               address={place.vicinity}
               ratings_num={place.user_ratings_total}
+              distance={getDistance(place.geometry.location, midpoint)}
               photo_reference={place.photos && place.photos[0].photo_reference}
               onClick={() => openModal(place)}
               onMouseOver={onMouseOver}
