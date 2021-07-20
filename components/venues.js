@@ -26,6 +26,7 @@ export default function Venues({ places, onMouseOver }) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
+  const [sortBy, setSortBy] = useState('Rating');
 
   const openModal = (place) => {
     setIsOpen(true);
@@ -48,14 +49,15 @@ export default function Venues({ places, onMouseOver }) {
   return (
     <div className={styles.places}>
       <h2>Your places.</h2>
-      <select name="sortby">
-        <option value="Recommended">Recommended</option>
-        <option value="Closest">Closest</option>
+      <select name="sortby" onChange={(e) => setSortBy(e.target.value)}>
         <option value="Rating">Rating</option>
+        <option value="Closest">Closest</option>
       </select>
       <ul>
         {
-          places && places.map((place) => (
+          places && places.sort((place, nextPlace) => {
+              return nextPlace.rating - place.rating;
+          }).map((place) => (
             <Card key={place.name}
               name={place.name}
               rating={place.rating}
