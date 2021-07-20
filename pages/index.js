@@ -138,7 +138,7 @@ export default function Home() {
             )
           }
 
-          <MarkersAndPlaces places={places}/>
+          <MarkersAndPlaces midpoint={midpoint} places={places}/>
         </GoogleMap>
       </LoadScriptNext>
     </div >

@@ -22,7 +22,7 @@ const customStyles = {
   },
 };
 
-export default function Venues({ places, onMouseOver }) {
+export default function Venues({ places, midpoint, onMouseOver }) {
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
@@ -46,6 +46,22 @@ export default function Venues({ places, onMouseOver }) {
     setIsOpen(false);
   }
 
+  const rad = (x) => {
+    return x * Math.PI / 180;
+  };
+  
+  const getDistance = (p1, p2) => {
+    const R = 6378137; // Earth’s mean radius in meter
+    const dLat = rad(p2.lat() - p1.lat);
+    const dLong = rad(p2.lng() - p1.lng);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(rad(p1.lat)) * Math.cos(rad(p2.lat())) *
+      Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+    return d; // returns the distance in meter
+  };
+
   return (
     <div className={styles.places}>
       <h2>Your places.</h2>
@@ -56,7 +72,11 @@ export default function Venues({ places, onMouseOver }) {
       <ul>
         {
           places && places.sort((place, nextPlace) => {
+            if (sortBy === 'Rating') {
               return nextPlace.rating - place.rating;
+            } else if (sortBy === 'Closest') {
+              return getDistance(place.geometry.location, midpoint) - getDistance(nextPlace.geometry.location, midpoint);
+            }
           }).map((place) => (
             <Card key={place.name}
               name={place.name}
