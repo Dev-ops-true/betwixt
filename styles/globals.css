@@ -10,15 +10,15 @@ body {
 
 @font-face {
   font-family: circular-black;
-  src: url(../public/CircularStd-Black.ttf) format('truetype');
+  src: url(../public/CircularStd-Black.ttf) format("truetype");
 }
 @font-face {
   font-family: circular-book;
-  src: url(../public/CircularStd-Book.ttf) format('truetype');
+  src: url(../public/CircularStd-Book.ttf) format("truetype");
 }
 @font-face {
   font-family: circular-medium;
-  src: url(../public/CircularStd-Medium.ttf) format('truetype');
+  src: url(../public/CircularStd-Medium.ttf) format("truetype");
 }
 
 a {
@@ -37,7 +37,7 @@ h1 {
   position: absolute;
   top: 0.4rem;
   left: 1.2rem;
-  color: rgb(24, 24, 24) ;
+  color: white ;
   z-index: 10;
   margin: 0;
   padding: 0;
@@ -59,4 +59,29 @@ h2 {
   max-width: 400px;
 }
 
+.ReactModalPortal {
+  position: relative;
+  z-index: 1000;
+}
 
+.button {
+  font: inherit;
+  border: 1px solid blue;
+  background: blue;
+  color: white;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  margin-right: 42px;
+  margin-top: 10px;
+  float: right;
+}
+
+.button:hover,
+.button:active {
+  background: #741188;
+  border-color: #741188;
+}
+
+.button:focus {
+  outline: none;
+}

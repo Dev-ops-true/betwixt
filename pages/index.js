@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBox from '../components/searchBox';
 import Venues from '../components/venues';
 import Markers from '../components/markers';
+import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
 import CircleComponent from "../components/circle";
 
@@ -17,10 +18,16 @@ import mapStyles from "../mapStyles";
 
 const libraries = ["places"];
 
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
+const mapContainerStyleInitial = {
+  width: '100vw',
+  height: '100vh',
 };
+
+const mapContainerStyleAfterSubmit = {
+  width: '75vw',
+  height: '100vh',
+
+}
 
 const center = {
   lat: 51.5084,
@@ -42,15 +49,28 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
+  const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
       if (response.status === 'OK') {
-        setDirectionsOptionsChanged(false)
-        setResponse(response)
-        const midpointIndex = Math.round(response.routes[0].overview_path.length / 2);
-        const midpoint = response.routes[0].overview_path[midpointIndex]
-        setMidpoint(midpoint)
+        setDirectionsOptionsChanged(false);
+        setResponse(response);
+
+        const currentJourney = response.routes[0].legs[0];
+        const currentJourneyHalfDuration = currentJourney.duration.value / 2;
+        let currentTotalDuration = 0;
+        let midpoint;
+
+        for (let i = 0; i < currentJourney.steps.length; i++) {
+          currentTotalDuration += currentJourney.steps[i].duration.value;
+          if (currentTotalDuration >= currentJourneyHalfDuration) { 
+            midpoint = currentJourney.steps[i].lat_lngs[0];
+            setMidpoint(midpoint);
+            break;
+          }
+        }
+        
         const places = await fetch(
           '/api/google', {
           method: 'POST',
@@ -72,24 +92,24 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setOrigin(event.target.childNodes[0].value);
-    setDestination(event.target.childNodes[1].value);
     setTravelMode(event.target.childNodes[2].value);
-    setDirectionsOptionsChanged(true);
     setCategory(event.target.childNodes[3].value);
+    setMapContainerStyle(mapContainerStyleAfterSubmit);
+    setDirectionsOptionsChanged(true);
   }
 
   return (
     <div>
       <h1>betwixt.</h1>
-      <SearchBox handleSubmit={handleSubmit} />
       <LoadScriptNext
-        googleMapsApiKey="AIzaSyBXlpinTY2iWYVXDuFFbE9PnrPIr7cfNHk"
+        googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
+        libraries={libraries}
       >
+        <SearchBox setOrigin={setOrigin} setDestination={setDestination} handleSubmit={handleSubmit} />
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
-          center={center}
+          center={midpoint || center}
           options={options}
         >
           {
@@ -132,6 +152,7 @@ export default function Home() {
                 />
               </div>
 
+
           )
         }
           {
@@ -140,11 +161,6 @@ export default function Home() {
           }
         </GoogleMap>
       </LoadScriptNext>
-      {
-        category && (
-          <Venues places={places}></Venues>
-        )
-      }
     </div >
   );
 }
