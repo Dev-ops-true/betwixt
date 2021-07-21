@@ -132,7 +132,8 @@ export default function Home() {
             response !== null && (
               <DirectionsRenderer
                 options={{
-                  directions: response
+                  directions: response,
+                  preserveViewport: true
                 }}
               />
             )
