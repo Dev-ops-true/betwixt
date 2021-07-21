@@ -164,6 +164,9 @@ export default function Home() {
             midpoint !== null && (
               <>
                 <Marker
+                  icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+                  size={new google.maps.Size(71, 71)}
+                  animation={google.maps.Animation.DROP}
                   position={midpoint}
                   title="Midpoint"
                 />
