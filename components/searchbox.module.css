@@ -1,0 +1,53 @@
+.mainauto {
+  padding: 4px;
+  border-radius: 6px;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  float: left;
+  display: inline-flex;
+  vertical-align: middle;
+  
+}
+
+.search {
+  font-family: circular-medium;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 5vh;
+  left: 20vw;
+  color: rgb(39, 39, 39) ;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.travelmode {
+  font-family: circular-medium;
+  font-size: 1rem;
+  color: rgb(39, 39, 39);
+  width: 8vw;
+  height: 4vh;
+  border: 0px;
+  outline:0px;
+  padding: 4px;
+  border-radius: 5px;
+  margin-right: 1vw;
+}
+
+.searchbutton {
+  font-family: circular-black;
+  font-size: 1rem;
+  color: rgb(39, 39, 39);
+  background: #9FE2BF;
+  width: 6.5vw;
+  height: 4.5vh;
+  border: 0px;
+  outline:0px;
+  padding: 5px;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  text-align: center;
+  letter-spacing: 0.05rem;
+  margin-left: 0.5vw;
+}

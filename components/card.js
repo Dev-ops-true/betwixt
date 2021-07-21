@@ -10,7 +10,7 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
       <div className={styles.card_info}>
         <p className={styles.card_title}>{name}</p>
         {open_now ? <p className={styles.open}>OPEN NOW</p> : <p className={styles.closed}>CLOSED</p>}
-          <span className={styles.card_rating}>{rating  || 'No reviews'} </span>
+          <span className={styles.card_rating}>{rating  || 'No reviews'} </span>&nbsp;
           <span className={styles.card_rating}>
             <ReactStars
             size={20}
@@ -18,7 +18,7 @@ export default function Card({ name, photo_reference, rating, ratings_num, addre
             value={rating}
             isHalf={true}
             edit={false}
-          /></span>
+          /></span>&nbsp;
           <span className={styles.card_ratings_num} > {`${ratings_num || 'No'} reviews`}</span>
         <p className={styles.card_address}><MdLocationOn/> {address}</p>
         <p className={styles.card_distance}><MdExplore/> {Math.round(distance)}m from your midpoint</p>

@@ -1,45 +1,35 @@
 .card {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-
-  background-color: white;
-  border: 1px solid #d3d3d3;
-  padding: 15px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #f1f1f1;
-  padding-left: 100px;
-  padding-bottom: 10px;
-  padding-right: 15px;
-  box-sizing: inherit;
-  overflow: scroll;
-  margin: 0 0 0 -40px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background-color: rgb(245, 245, 245);
-  border: 1px solid #ffffff;
-}
-
-.card_image {
-  float: right;
-  width: 1.6em;
-  padding-left: 5px;
+  width: 35vw;
+  background-color:transparent;
+  overflow: none;
+  max-width: 35vw;
+  padding-left: 2vw;
 }
 
 .card_title {
   font-family: circular-black;
-  font-size: 1.3em;
-  align: left;
+  font-size: 1.8em;
   margin-bottom: -0.1rem;
 }
 
+.card_rating {
+  font-family: circular-book;
+  font-size: 1.3em;
+  color: rgb(117, 117, 117);
+  display: inline-table !important;
+  margin:0 auto !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
 .card_photo {
-  display: flex;
-  border-radius: 15px;
-  align-content: flex-top;
+  border-radius: 8px;
+  position: absolute;
+  float: right;
+  width: 1.6em;
+  padding: 5px;
 }
 
 .card_address {
@@ -50,12 +40,60 @@
 
 .card_ratings_num {
   font-family: circular-book;
-  font-size: 0.7em;
+  font-size: 1.3em;
   color: rgb(117, 117, 117);
   letter-spacing: 0.02em;
-  display: inline-flex;
+  display: inline-table;
+  margin:0 auto;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .closed {
   color: red;
+  font-family: circular-medium;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+}
+
+.open {
+  color: green;
+  font-family: circular-medium;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+}
+
+.card_distance {
+  font-family: circular-book;
+  font-size: 0.9em;
+  color: rgb(128, 128, 128);
+}
+
+.card_stars {
+  top: 1em;
+}
+
+.phonenumber {
+  font-family: circular-book;
+  font-size: 1.3em;
+  color: rgb(128, 128, 128);
+  vertical-align: middle;
+}
+
+.openinghours {
+  font-family: circular-book;
+  font-size: 1.3em;
+  color: rgb(128, 128, 128);
+  float: left;
+  margin-top: -0.7vh;
+}
+
+.openinghours_hours {
+  font-family: circular-book;
+  font-size: 0.8em;
+  color: rgb(128, 128, 128);
+  vertical-align: middle;
+  text-align: left;
+  line-height: 6px;
+  letter-spacing: 0.1em;
 }

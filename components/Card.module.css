@@ -4,8 +4,8 @@
   width: 30vw;
   border: 1px solid rgb(245, 245, 245);
   background-color: white;
-  padding-left: 18px;
-  padding-bottom: 8px;
+  padding-left: 1.5vw;
+  padding-bottom: 0.3vh;
   padding-right: 10px;
   overflow: scroll;
   margin: 0 0 0 -2.8vw;
@@ -17,16 +17,11 @@
   border: 1px solid #ffffff;
 }
 
-.card_image {
-  float: right;
-  width: 1.6em;
-  padding: 5px;
-}
+
 
 .card_title {
   font-family: circular-black;
-  font-size: 1.5em;
-  align: left;
+  font-size: 1.2em;
   margin-bottom: -0.1rem;
 }
 
@@ -38,11 +33,15 @@
 
 .card_photo {
   border-radius: 8px;
+  position: inherit;
+  display:inline-table;
+  margin-right: -3vw;
+  float: right;
 }
 
 .card_address {
   font-family: circular-book;
-  font-size: 1em;
+  font-size: 0.9em;
   color: rgb(128, 128, 128);
 }
 
@@ -69,7 +68,7 @@
 
 .card_distance {
   font-family: circular-book;
-  font-size: 1em;
+  font-size: 0.9em;
   color: rgb(128, 128, 128);
 }
 

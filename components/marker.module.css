@@ -1,0 +1,26 @@
+.window {
+  font-family: circular-book;
+  font-size: 0.9em;
+  color: rgb(128, 128, 128);
+  text-align: center;
+  width: 9vw;
+  height: 16vh;
+  overflow: auto;
+  margin: -1.3vh 0 0 0;
+  vertical-align: middle !important;
+}
+
+.window_title {
+  font-family: circular-black;
+  font-size: 1.2em;
+  margin-bottom: -0.1rem;
+  color: black;
+}
+
+.window_open {
+  
+}
+
+.window_closed {
+  
+}

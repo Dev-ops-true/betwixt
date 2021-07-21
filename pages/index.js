@@ -91,8 +91,8 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setTravelMode(event.target.childNodes[2].value);
-    setCategory(event.target.childNodes[3].value);
+    setTravelMode(event.target.childNodes[1].value);
+    setCategory(event.target.childNodes[2].value);
     setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }

@@ -4,6 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import styles from './detailedCard.module.css'
 import Image from 'next/image'
 import Collapsible from 'react-collapsible';
+import { BiPhone, BiWindowAlt, BiTime, BiMap } from "react-icons/bi";
 
 export default function DetailedCard({ place_id, photo_reference }) {
 
@@ -33,9 +34,12 @@ export default function DetailedCard({ place_id, photo_reference }) {
           <div className={styles.card}>
             <div className={styles.card_info}>
               <p className={styles.card_title}>{activePlace.name}</p>
-              <p>{activePlace.rating}
-                <span><ReactStars
-                  size={15}
+              {
+                  activePlace.opening_hours?.open_now ? <p>OPEN NOW</p> : <p className={styles.closed}>CLOSED</p>
+                }
+              <span className={styles.card_rating}>{activePlace.rating}
+                <ReactStars
+                  size={20}
                   max={5}
                   value={activePlace.rating}
                   isHalf={true}
@@ -44,25 +48,18 @@ export default function DetailedCard({ place_id, photo_reference }) {
                 <span className={styles.card_ratings_num}>
                   {`${activePlace.user_ratings_total || 'No'} reviews`}
                 </span>
-              </p>
               <div>
-                <Image className={styles.card_photo} width={100} height={100} alt='Venue image' src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />
-              </div >
-              <div>
-                <p>{`Address: ${activePlace.formatted_address}`}</p>
-                {
-                  activePlace.opening_hours?.open_now ? <p>Open now</p> : <p className={styles.closed}>Closed</p>
-                }
-                <Collapsible trigger="Opening Hours &#9660;">
+                <p className={styles.phonenumber}><BiPhone/>&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
+                {activePlace.website && <p className={styles.phonenumber}><BiWindowAlt/>&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
+                </p>}
+                <p className={styles.phonenumber}><BiMap/>&nbsp;&nbsp;{`${activePlace.formatted_address}`}</p>
+                <p className={styles.openinghours}><Collapsible trigger="&#128337;&nbsp;&nbsp;Opening Hours &#9660;">
                   {
                     activePlace.opening_hours?.weekday_text.map((dayHours) => {
-                      return <p key={dayHours}>{dayHours}</p>
+                      return <p className={styles.openinghours_hours} key={dayHours}>{dayHours}</p>
                     })
                   }
-                </Collapsible>
-                <p>{`Phone number: ${activePlace.international_phone_number}`}</p>
-                {activePlace.website && <p> Website: <a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
-                </p>}
+                </Collapsible></p>
               </div>
 
             </div >
