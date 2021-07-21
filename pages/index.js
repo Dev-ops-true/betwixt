@@ -21,6 +21,19 @@ const mapContainerStyleInitial = {
   height: '100vh',
 };
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    paddingLeft: '-50%',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 10000
+  },
+};
+
 const mapContainerStyleAfterSubmit = {
   width: '70vw',
   height: '100vh',
@@ -65,6 +78,7 @@ export default function Home() {
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
   const [error, setError] = React.useState(null);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const mapRef = React.useRef(null);
   const circleRef = React.useRef(null);
@@ -76,9 +90,9 @@ export default function Home() {
   }, []);
 
   const directionsCallback = async (response) => {
+    setDirectionsOptionsChanged(false);
     if (response !== null) {
       if (response.status === 'OK') {
-        setDirectionsOptionsChanged(false);
         setResponse(response);
         const currentJourney = response.routes[0].legs[0];
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
@@ -106,8 +120,10 @@ export default function Home() {
         const placesJson = await places.json()
         placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
+        setMapContainerStyle(mapContainerStyleAfterSubmit);
       } else if (response.status === 'ZERO_RESULTS') {
-        handleError(response.status);
+        setError(response.status);
+        openModal();
       }
     }
   }
@@ -116,7 +132,6 @@ export default function Home() {
     event.preventDefault();
     setTravelMode(event.target.childNodes[3].value);
     setCategory(event.target.childNodes[4].value);
-    setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
 
@@ -124,12 +139,14 @@ export default function Home() {
     const bounds = circleRef.current.getBounds();
     mapRef.current.fitBounds(bounds);
   }
-  const handleError = (error) => {
-    setError(
-      {
-        message: error
-      })
-  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   return (
     <div>
@@ -201,19 +218,22 @@ export default function Home() {
             )
           }
           {
-            (!error && places !== null) && (
+            (places !== null) && (
               <MarkersAndPlaces midpoint={midpoint} places={places} />
             )
           }
 
           {
-            error &&
-            <Modal>
-              <h2>{`${error}. Please refine your search and try again`}</h2>
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              style={customStyles}
+            >
+              <h2>Zero results.</h2>
               <div>
-                <p>{error.message}</p>
+                <p>Please refine your search and try again.</p>
               </div>
-              <button className="button">Okay</button>
+              <button className="button" onClick={closeModal}>Okay</button>
             </Modal>
           }
         </GoogleMap>
