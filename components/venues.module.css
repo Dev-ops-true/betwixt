@@ -1,10 +1,23 @@
 .places {
   background-color: white;
-  position: fixed;
   right: 0vw;
-  width: 100%;
-  max-width: 25vw;
+  width: 30vw;
+  max-width: 30vw;
   overflow-y: scroll;
   max-height: 100vh;
+  position:fixed;
+  
 }
 
+.sortby {
+  font-family: circular-medium;
+  font-size: 1rem;
+  color: rgb(39, 39, 39);
+  width: 6vw;
+  border: 0px;
+  outline:0px;
+  padding: 4px;
+  border-radius: 6px;
+  margin-right: 1vw;
+  display:flexbox;
+}

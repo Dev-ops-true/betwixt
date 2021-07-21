@@ -65,7 +65,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
   return (
     <div className={styles.places}>
       <h2>Your places.</h2>
-      <select name="sortby" onChange={(e) => setSortBy(e.target.value)}>
+      <select className={styles.sortby} name="sortby" onChange={(e) => setSortBy(e.target.value)}>
         <option value="Rating">Rating</option>
         <option value="Closest">Closest</option>
       </select>

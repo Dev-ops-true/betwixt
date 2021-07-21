@@ -3,6 +3,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import styles from './placesautocomplete.module.css';
 
 export default function PlacesAutocomplete({setPlace}) {
   const {

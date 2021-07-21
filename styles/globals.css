@@ -30,6 +30,13 @@ a {
   box-sizing: border-box;
 }
 
+span {
+  display: inline-table;
+  margin:0 auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
 h1 {
   font-family: circular-black;
   font-size: 5rem;

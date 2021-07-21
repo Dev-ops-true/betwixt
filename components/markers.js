@@ -1,6 +1,7 @@
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { useState } from 'react';
 import ReactStars from "react-rating-stars-component";
+import styles from './marker.module.css'
 
 export default function Markers({ places, currentPlace }) {
   const [open, setOpen] = useState(false);
@@ -27,19 +28,18 @@ export default function Markers({ places, currentPlace }) {
                   position={place.vicinity}
                   onCloseClick={() => mouseOutHandler}
                 >
-                  <div>
-                    <p>{place.name}</p>
-                    <p>
+                  <div className={styles.window}>
+                    <p className={styles.window_title}>{place.name}</p>
+                    <span className={styles.window_rating}>
                       {place.rating}
                       <ReactStars
-                        size={20}
+                        size={11}
                         max={5}
                         value={place.rating}
                         isHalf={true}
                         edit={false}
                       />
-                      {`(${place.user_ratings_total})`}
-                    </p>
+                    </span>
                     <p>{place.vicinity}</p>
                   </div>
                 </InfoWindow>
