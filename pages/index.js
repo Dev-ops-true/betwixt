@@ -4,14 +4,14 @@ import Venues from '../components/venues';
 import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
-import CircleComponent from "../components/circle";
 
 import {
   GoogleMap,
   LoadScriptNext,
   DirectionsService,
   DirectionsRenderer,
-  Marker
+  Marker,
+  Circle
 } from "@react-google-maps/api";
 
 import mapStyles from "../mapStyles";
@@ -40,6 +40,20 @@ const options = {
   zoomControl: true,
 };
 
+const circleOptions = {
+  strokeColor: '#FF0000',
+  strokeOpacity: 0,
+  strokeWeight: 0,
+  fillColor: '#9FE2BF',
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 1500,
+  zIndex: 1
+}
+
 export default function Home() {
   const [origin, setOrigin] = React.useState("");
   const [destination, setDestination] = React.useState("");
@@ -52,12 +66,14 @@ export default function Home() {
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
 
+  const mapRef = React.useRef(null);
+  const circleRef = React.useRef(null);
+
   const directionsCallback = async (response) => {
     if (response !== null) {
       if (response.status === 'OK') {
         setDirectionsOptionsChanged(false);
         setResponse(response);
-        console.log(response);
         const currentJourney = response.routes[0].legs[0];
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
         let currentTotalDuration = 0;
@@ -84,7 +100,6 @@ export default function Home() {
         const placesJson = await places.json()
         placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
-        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
@@ -97,6 +112,11 @@ export default function Home() {
     setCategory(event.target.childNodes[4].value);
     setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
+  }
+
+  const handleZoomLevel = () => {
+    const bounds = circleRef.current.getBounds();
+    mapRef.current.fitBounds(bounds);
   }
 
   return (
@@ -112,6 +132,7 @@ export default function Home() {
           zoom={12}
           center={midpoint || center}
           options={options}
+          onLoad={(map) => mapRef.current = map}
         >
           {
             (
@@ -134,7 +155,8 @@ export default function Home() {
             response !== null && (
               <DirectionsRenderer
                 options={{
-                  directions: response
+                  directions: response,
+                  preserveViewport: true
                 }}
               />
             )
@@ -144,19 +166,31 @@ export default function Home() {
             midpoint !== null && (
               <>
                 <Marker
+                  icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+                  size={new google.maps.Size(71, 71)}
+                  animation={google.maps.Animation.DROP}
                   position={midpoint}
                   title="Midpoint"
                 />
-                <CircleComponent
-                  midPoint={midpoint}
+                <Circle
+                  center={{
+                    lat: midpoint.lat(),
+                    lng: midpoint.lng()
+                  }}
                   radius={radius}
+                  options={circleOptions}
+                  ref={circleRef}
+                  onLoad={(circle) => {
+                    circleRef.current = circle
+                    handleZoomLevel()
+                  }}
                 />
               </>
             )
           }
           {
             places !== null && (
-               <MarkersAndPlaces midpoint={midpoint} places={places}/>
+              <MarkersAndPlaces midpoint={midpoint} places={places} />
             )
           }
         </GoogleMap>
