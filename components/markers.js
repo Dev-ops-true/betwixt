@@ -22,7 +22,9 @@ export default function Markers({ places, currentPlace }) {
       {
         places.map(place => {
           return (
-            <Marker key={place.place_id} position={place.geometry.location} title={place.name} onMouseOver={() => mouseOverHandler(place)} onMouseOut={mouseOutHandler}>
+            <Marker key={place.place_id} position={place.geometry.location} title={place.name} onMouseOver={() => mouseOverHandler(place)} 
+            onMouseOut={mouseOutHandler}
+            animation={google.maps.Animation.DROP}>
               {((open && selectedPlace && selectedPlace.name === place.name) || (currentPlace === place.name)) && (
                 <InfoWindow
                   position={place.vicinity}
