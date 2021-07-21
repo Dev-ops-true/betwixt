@@ -4,7 +4,6 @@ import Venues from '../components/venues';
 import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
-import CircleComponent from "../components/circle";
 
 import {
   GoogleMap,
@@ -74,7 +73,6 @@ export default function Home() {
       if (response.status === 'OK') {
         setDirectionsOptionsChanged(false);
         setResponse(response);
-        console.log(response);
         const currentJourney = response.routes[0].legs[0];
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
         let currentTotalDuration = 0;
@@ -100,7 +98,6 @@ export default function Home() {
         const placesJson = await places.json()
         placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
-        console.log(placesJson.results)
       } else {
         console.log('response: ', response)
       }
@@ -133,7 +130,7 @@ export default function Home() {
           zoom={12}
           center={midpoint || center}
           options={options}
-          ref={mapRef}
+          onLoad={(map) => mapRef.current = map}
         >
           {
             (
@@ -178,7 +175,10 @@ export default function Home() {
                   radius={1500}
                   options={circleOptions}
                   ref={circleRef}
-                  onLoad={handleZoomLevel}
+                  onLoad={(circle) => {
+                    circleRef.current = circle
+                    handleZoomLevel()
+                  }}
                 />
               </>
             )
