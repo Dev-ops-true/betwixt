@@ -50,7 +50,7 @@ const circleOptions = {
   draggable: false,
   editable: false,
   visible: true,
-  radius: 1500,
+  radius: 500,
   zIndex: 1
 }
 
@@ -62,7 +62,7 @@ export default function Home() {
   const [directionsOptionsChanged, setDirectionsOptionsChanged] = React.useState(false);
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
-  const [radius, setRadius] = React.useState(1500);
+  const [radius, setRadius] = React.useState(500);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
@@ -71,8 +71,8 @@ export default function Home() {
   const circleRef = React.useRef(null);
 
   React.useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setCenter({ lat: position.coords.latitude, lng: position.coords.longitude })
     });
   }, []);
 
