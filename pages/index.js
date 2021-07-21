@@ -29,7 +29,7 @@ const mapContainerStyleAfterSubmit = {
 
 }
 
-const center = {
+const defaultCenter = {
   lat: 51.5084,
   lng: -0.2744,
 };
@@ -55,6 +55,7 @@ const circleOptions = {
 }
 
 export default function Home() {
+  const [center, setCenter] = React.useState(defaultCenter);
   const [origin, setOrigin] = React.useState("");
   const [destination, setDestination] = React.useState("");
   const [travelMode, setTravelMode] = React.useState('DRIVING');
@@ -67,6 +68,12 @@ export default function Home() {
 
   const mapRef = React.useRef(null);
   const circleRef = React.useRef(null);
+
+  React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
+    });
+  }, []);
 
   const directionsCallback = async (response) => {
     if (response !== null) {
