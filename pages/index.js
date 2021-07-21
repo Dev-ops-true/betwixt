@@ -126,6 +126,12 @@ export default function Home() {
     mapRef.current.fitBounds(bounds);
   }
 
+  React.useEffect(() => {
+    if (circleRef.current) {
+      handleZoomLevel();
+    }
+  }, [radius])
+
   return (
     <div>
       <h1>betwixt.</h1>
