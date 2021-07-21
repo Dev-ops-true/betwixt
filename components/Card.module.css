@@ -37,6 +37,8 @@
   display:inline-table;
   margin-right: -3vw;
   float: right;
+  width:100px;
+  height:100px;
 }
 
 .card_address {

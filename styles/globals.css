@@ -44,7 +44,7 @@ h1 {
   position: absolute;
   top: 0.4rem;
   left: 1.2rem;
-  color: white ;
+  color: rgb(44, 44, 44) ;
   z-index: 10;
   margin: 0;
   padding: 0;
