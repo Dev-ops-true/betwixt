@@ -47,6 +47,7 @@ export default function Home() {
   const [directionsOptionsChanged, setDirectionsOptionsChanged] = React.useState(false);
   const [response, setResponse] = React.useState(null);
   const [midpoint, setMidpoint] = React.useState(null);
+  const [radius, setRadius] = React.useState(1500);
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
@@ -74,11 +75,12 @@ export default function Home() {
         const places = await fetch(
           '/api/google', {
           method: 'POST',
-          body: JSON.stringify({ midpoint: midpoint, category: category }),
+          body: JSON.stringify({ midpoint: midpoint, category: category, radius: radius }),
           headers: {
             "Content-Type": "application/json"
           }
         })
+
         const placesJson = await places.json()
         placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
@@ -91,8 +93,8 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setTravelMode(event.target.childNodes[1].value);
-    setCategory(event.target.childNodes[2].value);
+    setTravelMode(event.target.childNodes[3].value);
+    setCategory(event.target.childNodes[4].value);
     setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
@@ -104,7 +106,7 @@ export default function Home() {
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
       >
-        <SearchBox setOrigin={setOrigin} setDestination={setDestination} handleSubmit={handleSubmit} />
+        <SearchBox setOrigin={setOrigin} setDestination={setDestination} setRadius={setRadius} handleSubmit={handleSubmit} />
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
@@ -147,7 +149,7 @@ export default function Home() {
                 />
                 <CircleComponent
                   midPoint={midpoint}
-                  radius={1500}
+                  radius={radius}
                 />
               </>
             )
