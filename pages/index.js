@@ -4,6 +4,8 @@ import Venues from '../components/venues';
 import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import logo from '../public/logo.png';
+import CircleComponent from "../components/circle";
+import Modal from 'react-modal';
 
 import {
   GoogleMap,
@@ -66,13 +68,14 @@ export default function Home() {
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
+  const [error, setError] = React.useState(null);
 
   const mapRef = React.useRef(null);
   const circleRef = React.useRef(null);
 
   React.useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setCenter({lat: position.coords.latitude, lng: position.coords.longitude})
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setCenter({ lat: position.coords.latitude, lng: position.coords.longitude })
     });
   }, []);
 
@@ -107,8 +110,8 @@ export default function Home() {
         const placesJson = await places.json()
         placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
-      } else {
-        console.log('response: ', response)
+      } else if (response.status === 'ZERO_RESULTS') {
+        handleError(response.status);
       }
     }
   }
@@ -125,6 +128,12 @@ export default function Home() {
     const bounds = circleRef.current.getBounds();
     mapRef.current.fitBounds(bounds);
   }
+  const handleError = (error) => {
+    setError(
+      {
+        message: error
+      })
+  };
 
   return (
     <div>
@@ -196,9 +205,20 @@ export default function Home() {
             )
           }
           {
-            places !== null && (
+            (!error && places !== null) && (
               <MarkersAndPlaces midpoint={midpoint} places={places} />
             )
+          }
+
+          {
+            error &&
+            <Modal>
+              <h2>{`${error}. Please refine your search and try again`}</h2>
+              <div>
+                <p>{error.message}</p>
+              </div>
+              <button className="button">Okay</button>
+            </Modal>
           }
         </GoogleMap>
       </LoadScriptNext>
