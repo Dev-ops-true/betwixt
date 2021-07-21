@@ -11,7 +11,8 @@ import {
   LoadScriptNext,
   DirectionsService,
   DirectionsRenderer,
-  Marker
+  Marker,
+  Circle
 } from "@react-google-maps/api";
 
 import mapStyles from "../mapStyles";
@@ -39,6 +40,20 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
+
+const circleOptions = {
+  strokeColor: '#FF0000',
+  strokeOpacity: 0,
+  strokeWeight: 0,
+  fillColor: '#9FE2BF',
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 1500,
+  zIndex: 1
+}
 
 export default function Home() {
   const [origin, setOrigin] = React.useState("");
@@ -155,9 +170,13 @@ export default function Home() {
                   position={midpoint}
                   title="Midpoint"
                 />
-                <CircleComponent
-                  midPoint={midpoint}
+                <Circle
+                  center={{
+                    lat: midpoint.lat(),
+                    lng: midpoint.lng()
+                  }}
                   radius={1500}
+                  options={circleOptions}
                   ref={circleRef}
                   onLoad={handleZoomLevel}
                 />
