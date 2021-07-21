@@ -166,7 +166,7 @@ export default function Home() {
                 <Marker
                   icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
                   size={new google.maps.Size(71, 71)}
-                  animation={google.maps.Animation.DROP}
+                  animation={google.maps.Animation.BOUNCE}
                   position={midpoint}
                   title="Midpoint"
                 />
