@@ -51,6 +51,9 @@ export default function Home() {
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
 
+  const mapRef = React.useRef(null);
+  const circleRef = React.useRef(null);
+
   const directionsCallback = async (response) => {
     if (response !== null) {
       if (response.status === 'OK') {
@@ -97,6 +100,11 @@ export default function Home() {
     setDirectionsOptionsChanged(true);
   }
 
+  const handleZoomLevel = () => {
+    const bounds = circleRef.current.getBounds();
+    mapRef.current.fitBounds(bounds);
+  }
+
   return (
     <div>
       <h1>betwixt.</h1>
@@ -110,6 +118,7 @@ export default function Home() {
           zoom={12}
           center={midpoint || center}
           options={options}
+          ref={mapRef}
         >
           {
             (
@@ -149,13 +158,15 @@ export default function Home() {
                 <CircleComponent
                   midPoint={midpoint}
                   radius={1500}
+                  ref={circleRef}
+                  onLoad={handleZoomLevel}
                 />
               </>
             )
           }
           {
             places !== null && (
-               <MarkersAndPlaces midpoint={midpoint} places={places}/>
+              <MarkersAndPlaces midpoint={midpoint} places={places} />
             )
           }
         </GoogleMap>
