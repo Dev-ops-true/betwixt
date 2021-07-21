@@ -1,10 +1,6 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
-import Venues from '../components/venues';
-import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
-import logo from '../public/logo.png';
-import CircleComponent from "../components/circle";
 import Modal from 'react-modal';
 
 import {
