@@ -151,6 +151,7 @@ export default function Home() {
   React.useEffect(() => {
     if (circleRef.current) {
       handleZoomLevel();
+      setDirectionsOptionsChanged(true);
     }
   }, [radius])
 
