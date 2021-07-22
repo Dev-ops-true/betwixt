@@ -2,6 +2,8 @@ import React from 'react';
 import SearchBox from '../components/searchBox';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import Modal from 'react-modal';
+import Image from 'next/image'
+import logo from '../public/logo.png'
 
 import {
   GoogleMap,
@@ -157,7 +159,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>betwixt.</h1>
+      <h1><Image alt='betwixt logo' src={logo} width='231' height='52'></Image></h1>
       <LoadScriptNext
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
