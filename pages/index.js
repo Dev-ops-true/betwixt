@@ -2,6 +2,8 @@ import React from 'react';
 import SearchBox from '../components/searchBox';
 import MarkersAndPlaces from '../components/markersAndPlaces';
 import Modal from 'react-modal';
+import Image from 'next/image'
+import logo from '../public/logo.png'
 
 import {
   GoogleMap,
@@ -117,8 +119,9 @@ export default function Home() {
         })
 
         const placesJson = await places.json()
-        placesJson.results.splice(0, 1)
-        setPlaces(placesJson.results)
+        setPlaces(placesJson.results.filter((place) => {
+          return place.business_status === 'OPERATIONAL'
+        }))
         setMapContainerStyle(mapContainerStyleAfterSubmit);
       } else if (response.status === 'ZERO_RESULTS') {
         setError(response.status);
@@ -155,7 +158,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>betwixt.</h1>
+      <h1><Image alt='betwixt logo' src={logo} width='231' height='52'></Image></h1>
       <LoadScriptNext
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
@@ -211,7 +214,7 @@ export default function Home() {
             midpoint !== null && (
               <>
                 <Marker
-                  
+                  icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
                   size={new google.maps.Size(71, 71)}
                   animation={google.maps.Animation.BOUNCE}
                   position={midpoint}
