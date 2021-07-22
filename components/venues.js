@@ -30,7 +30,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
 
   const openModal = (place) => {
     setIsOpen(true);
-    setActiveCard(place)
+    setActiveCard(place);
   }
 
   function afterOpenModal() {
@@ -101,8 +101,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
         {
           activeCard && <DetailedCard
             place_id={activeCard.place_id}
-            photo_reference={activeCard.photos && activeCard.photos[0].photo_reference}>
-          </DetailedCard>
+            photo_reference={activeCard.photos && activeCard.photos[0].photo_reference} />
         }
       </Modal>
     </div >

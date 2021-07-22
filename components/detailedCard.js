@@ -27,6 +27,9 @@ export default function DetailedCard({ place_id, photo_reference }) {
     }
     fetchData();
   }, [place_id]);
+
+  if (!activePlace) return "Loading..."
+
   return (
     <>
       {
@@ -35,8 +38,8 @@ export default function DetailedCard({ place_id, photo_reference }) {
             <div className={styles.card_info}>
               <p className={styles.card_title}>{activePlace.name}</p>
               {
-                  activePlace.opening_hours?.open_now ? <p>OPEN NOW</p> : <p className={styles.closed}>CLOSED</p>
-                }
+                activePlace.opening_hours?.open_now ? <p>OPEN NOW</p> : <p className={styles.closed}>CLOSED</p>
+              }
               <span className={styles.card_rating}>{activePlace.rating}
                 <ReactStars
                   size={20}
@@ -45,14 +48,14 @@ export default function DetailedCard({ place_id, photo_reference }) {
                   isHalf={true}
                   edit={false}
                 /></span>
-                <span className={styles.card_ratings_num}>
-                  {`${activePlace.user_ratings_total || 'No'} reviews`}
-                </span>
+              <span className={styles.card_ratings_num}>
+                {`${activePlace.user_ratings_total || 'No'} reviews`}
+              </span>
               <div>
-                <p className={styles.phonenumber}><BiPhone/>&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
-                {activePlace.website && <p className={styles.phonenumber}><BiWindowAlt/>&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
+                <p className={styles.phonenumber}><BiPhone />&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
+                {activePlace.website && <p className={styles.phonenumber}><BiWindowAlt />&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
                 </p>}
-                <p className={styles.phonenumber}><BiMap/>&nbsp;&nbsp;{`${activePlace.formatted_address}`}</p>
+                <p className={styles.phonenumber}><BiMap />&nbsp;&nbsp;{`${activePlace.formatted_address}`}</p>
                 <p className={styles.openinghours}><Collapsible trigger="&#128337;&nbsp;&nbsp;Opening Hours &#9660;">
                   {
                     activePlace.opening_hours?.weekday_text.map((dayHours) => {
