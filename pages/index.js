@@ -83,7 +83,7 @@ export default function Home() {
   const [midpoint, setMidpoint] = React.useState(null);
   const [radius, setRadius] = React.useState(500);
   const [places, setPlaces] = React.useState(null);
-  const [category, setCategory] = React.useState(null);
+  const [category, setCategory] = React.useState('restaurant');
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
   const [error, setError] = React.useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
