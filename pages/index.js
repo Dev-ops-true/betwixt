@@ -118,8 +118,9 @@ export default function Home() {
         })
 
         const placesJson = await places.json()
-        placesJson.results.splice(0, 1)
-        setPlaces(placesJson.results)
+        setPlaces(placesJson.results.filter((place) => {
+          return place.business_status === 'OPERATIONAL'
+        }))
         setMapContainerStyle(mapContainerStyleAfterSubmit);
       } else if (response.status === 'ZERO_RESULTS') {
         setError(response.status);
