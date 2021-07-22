@@ -69,24 +69,22 @@ h2 {
 .ReactModalPortal {
   position: relative;
   z-index: 1000;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255) !important;
 }
 
 .button {
-  font: inherit;
-  border: 1px solid blue;
-  background: blue;
-  color: white;
-  padding: 0.25rem 1rem;
+  border: 1px solid rgb(159, 226, 191);
+  background: rgb(159, 226, 191);
+  color: rgb(53, 53, 53);
+  padding: 0.5rem 1rem 0.7rem 1rem;
   cursor: pointer;
-  margin-right: 42px;
+  margin-right: 35px;
   margin-top: 10px;
   float: right;
-}
-
-.button:hover,
-.button:active {
-  background: #741188;
-  border-color: #741188;
+  font-family: circular-medium;
+  font-size: 1rem;
+  border-radius: 5px;
 }
 
 .button:focus {
