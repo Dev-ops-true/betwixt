@@ -33,15 +33,6 @@ export default function Venues({ places, midpoint, onMouseOver }) {
     setActiveCard(place)
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   function closeModal() {
     setIsOpen(false);
   }
@@ -94,7 +85,6 @@ export default function Venues({ places, midpoint, onMouseOver }) {
       </ul>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal">

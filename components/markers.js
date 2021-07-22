@@ -27,7 +27,7 @@ export default function Markers({ places, currentPlace }) {
             animation={google.maps.Animation.DROP}>
               {((open && selectedPlace && selectedPlace.name === place.name) || (currentPlace === place.name)) && (
                 <InfoWindow
-                  position={place.vicinity}
+                  position={place.geometry.location}
                   onCloseClick={() => mouseOutHandler}
                 >
                   <div className={styles.window}>

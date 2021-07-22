@@ -1,9 +1,7 @@
 import React from 'react';
 import SearchBox from '../components/searchBox';
-import Venues from '../components/venues';
-import Markers from '../components/markers';
 import MarkersAndPlaces from '../components/markersAndPlaces';
-import logo from '../public/logo.png';
+import Modal from 'react-modal';
 
 import {
   GoogleMap,
@@ -21,6 +19,19 @@ const libraries = ["places"];
 const mapContainerStyleInitial = {
   width: '100vw',
   height: '100vh',
+};
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    paddingLeft: '-50%',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 10000
+  },
 };
 
 const mapContainerStyleAfterSubmit = {
@@ -66,6 +77,8 @@ export default function Home() {
   const [places, setPlaces] = React.useState(null);
   const [category, setCategory] = React.useState(null);
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
+  const [error, setError] = React.useState(null);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const mapRef = React.useRef(null);
   const circleRef = React.useRef(null);
@@ -77,9 +90,9 @@ export default function Home() {
   }, []);
 
   const directionsCallback = async (response) => {
+    setDirectionsOptionsChanged(false);
     if (response !== null) {
       if (response.status === 'OK') {
-        setDirectionsOptionsChanged(false);
         setResponse(response);
         const currentJourney = response.routes[0].legs[0];
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
@@ -107,8 +120,10 @@ export default function Home() {
         const placesJson = await places.json()
         placesJson.results.splice(0, 1)
         setPlaces(placesJson.results)
-      } else {
-        console.log('response: ', response)
+        setMapContainerStyle(mapContainerStyleAfterSubmit);
+      } else if (response.status === 'ZERO_RESULTS') {
+        setError(response.status);
+        openModal();
       }
     }
   }
@@ -117,13 +132,20 @@ export default function Home() {
     event.preventDefault();
     setTravelMode(event.target.childNodes[3].value);
     setCategory(event.target.childNodes[4].value);
-    setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
 
   const handleZoomLevel = () => {
     const bounds = circleRef.current.getBounds();
     mapRef.current.fitBounds(bounds);
+  }
+
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
   }
 
   React.useEffect(() => {
@@ -202,9 +224,23 @@ export default function Home() {
             )
           }
           {
-            places !== null && (
+            (places !== null) && (
               <MarkersAndPlaces midpoint={midpoint} places={places} />
             )
+          }
+
+          {
+            <Modal
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+              style={customStyles}
+            >
+              <h2>Zero results.</h2>
+              <div>
+                <p>Please refine your search and try again.</p>
+              </div>
+              <button className="button" onClick={closeModal}>Okay</button>
+            </Modal>
           }
         </GoogleMap>
       </LoadScriptNext>
