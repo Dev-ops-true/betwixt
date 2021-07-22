@@ -206,15 +206,27 @@ export default function Home() {
               />
             )
           }
-          { 
-          center !== null && (
-            <>
-              <Marker
-              icon={"http://maps.google.com/mapfiles/kml/pal3/icon56.png"}
-              position={center}
-              title="Center"
-              />
-            </>
+          {
+            center !== null && (
+              <>
+                <Circle
+                  center={center}
+                  radius={400}
+                  options={{
+                    strokeColor: '#4597ce',
+                    strokeOpacity: 0,
+                    strokeWeight: 0,
+                    fillColor: '#4597ce',
+                    fillOpacity: 0.60,
+                    clickable: false,
+                    draggable: true,
+                    editable: false,
+                    visible: true,
+                    radius: 500,
+                    zIndex: 1
+                  }}
+                />
+              </>
             )
           }
 
