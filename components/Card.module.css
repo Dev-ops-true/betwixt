@@ -1,6 +1,4 @@
 .card {
-  display: flex;
-  flex-direction: row;
   width: 30vw;
   border: 1px solid rgb(245, 245, 245);
   background-color: white;
@@ -23,6 +21,7 @@
   font-family: circular-black;
   font-size: 1.2em;
   margin-bottom: -0.1rem;
+  max-width: 19vw;
 }
 
 .card_rating {
@@ -33,18 +32,25 @@
 
 .card_photo {
   border-radius: 8px;
-  position: inherit;
-  display:inline-table;
-  margin-right: -3vw;
-  float: right;
-  width:100px;
-  height:100px;
+  float: right !important;
+  display: flex !important;
+  flex-direction: row !important;
+  padding: 15px;
+  margin-top: 10vh;
+
+}
+
+.photodiv {
+  position: absolute;
+  left: 21.5vw;
+  vertical-align: middle;
 }
 
 .card_address {
   font-family: circular-book;
   font-size: 0.9em;
   color: rgb(128, 128, 128);
+  max-width: 18vw;
 }
 
 .card_ratings_num {

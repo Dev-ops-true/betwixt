@@ -6,11 +6,12 @@
   overflow: none;
   max-width: 35vw;
   padding-left: 2vw;
+  
 }
 
 .card_title {
   font-family: circular-black;
-  font-size: 1.8em;
+  font-size: 2em;
   margin-bottom: -0.1rem;
 }
 
@@ -26,10 +27,17 @@
 
 .card_photo {
   border-radius: 8px;
+  float: right !important;
+  display: flex !important;
+  flex-direction: row !important;
+  padding: 15px;
+  margin-top: 10vh;
+}
+
+.photodiv {
   position: absolute;
-  float: right;
-  width: 1.6em;
-  padding: 5px;
+  left: 26vw;
+  vertical-align: middle;
 }
 
 .card_address {
@@ -40,7 +48,7 @@
 
 .card_ratings_num {
   font-family: circular-book;
-  font-size: 1.3em;
+  font-size: 1em;
   color: rgb(117, 117, 117);
   letter-spacing: 0.02em;
   display: inline-table;

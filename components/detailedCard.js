@@ -38,19 +38,23 @@ export default function DetailedCard({ place_id, photo_reference }) {
             <div className={styles.card_info}>
               <p className={styles.card_title}>{activePlace.name}</p>
               {
-                activePlace.opening_hours?.open_now ? <p>OPEN NOW</p> : <p className={styles.closed}>CLOSED</p>
-              }
-              <span className={styles.card_rating}>{activePlace.rating}
+                  activePlace.opening_hours?.open_now ? <p className={styles.open}>OPEN NOW</p> : <p className={styles.closed}>CLOSED</p>
+                }
+
+                <div className={styles.photodiv}>
+                  {photo_reference && <Image className={styles.card_photo} width={100} height={100} alt='Venue image' src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=${photo_reference}&key=${process.env.NEXT_PUBLIC_API_KEY}`} />}
+                </div>
+              <span className={styles.card_rating}>{activePlace.rating} </span>&nbsp;&nbsp;
+              <span className={styles.card_rating}>
                 <ReactStars
                   size={20}
                   max={5}
                   value={activePlace.rating}
                   isHalf={true}
                   edit={false}
-                /></span>
-              <span className={styles.card_ratings_num}>
-                {`${activePlace.user_ratings_total || 'No'} reviews`}
-              </span>
+                /></span>&nbsp;&nbsp;
+                <span className={styles.card_ratings_num}>
+                  {`${activePlace.user_ratings_total || 'No'} reviews`}</span>
               <div>
                 <p className={styles.phonenumber}><BiPhone />&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
                 {activePlace.website && <p className={styles.phonenumber}><BiWindowAlt />&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>

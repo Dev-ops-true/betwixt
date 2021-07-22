@@ -4,6 +4,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import styles from './placesautocomplete.module.css';
+import { MdLocationOn, MdExplore } from "react-icons/md";
 
 export default function PlacesAutocomplete({setPlace}) {
   const {
@@ -56,15 +57,16 @@ export default function PlacesAutocomplete({setPlace}) {
       } = suggestion;
 
       return (
-        <li key={place_id} onClick={handleSelect(suggestion)}>
-          <strong>{main_text}</strong> <small>{secondary_text}</small>
-        </li>
+        <ul className={styles.dropdown} key={place_id} onClick={handleSelect(suggestion)}>
+          <span className={styles.listoptions}><strong><MdLocationOn/>&nbsp;{main_text}</strong>&nbsp;&nbsp;<small>{secondary_text}</small></span>
+        </ul>
       );
     });
 
   return (
-    <div ref={ref}>
+    <div>
       <input
+        className={styles.autobox}
         value={value}
         onChange={handleInput}
         disabled={!ready}

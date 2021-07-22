@@ -23,7 +23,7 @@ export default [
         "featureType": "administrative",
         "stylers": [
             {
-                "visibility": "off"
+                "visibility": "on"
             }
         ]
     },
