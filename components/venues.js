@@ -30,16 +30,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
 
   const openModal = (place) => {
     setIsOpen(true);
-    setActiveCard(place)
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
+    setActiveCard(place);
   }
 
   function closeModal() {
@@ -49,7 +40,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
   const rad = (x) => {
     return x * Math.PI / 180;
   };
-  
+
   const getDistance = (p1, p2) => {
     const R = 6378137; // Earth’s mean radius in meter
     const dLat = rad(p2.lat() - p1.lat);
@@ -94,18 +85,15 @@ export default function Venues({ places, midpoint, onMouseOver }) {
       </ul>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal">
         {
           activeCard && <DetailedCard
             place_id={activeCard.place_id}
-            photo_reference={activeCard.photos && activeCard.photos[0].photo_reference}>
-          </DetailedCard>
+            photo_reference={activeCard.photos && activeCard.photos[0].photo_reference} />
         }
-        <button className="button" onClick={closeModal}>close</button>
       </Modal>
-    </div>
+    </div >
   )
 }
