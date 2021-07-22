@@ -106,7 +106,6 @@ export default function Home() {
         const currentJourneyHalfDuration = currentJourney.duration.value / 2;
         let currentTotalDuration = 0;
         let midpoint;
-
         for (let i = 0; i < currentJourney.steps.length; i++) {
           currentTotalDuration += currentJourney.steps[i].duration.value;
           if (currentTotalDuration >= currentJourneyHalfDuration) {
@@ -203,6 +202,17 @@ export default function Home() {
                   preserveViewport: true
                 }}
               />
+            )
+          }
+          { 
+          center !== null && (
+            <>
+              <Marker
+              icon={"http://maps.google.com/mapfiles/kml/pal3/icon56.png"}
+              position={center}
+              title="Center"
+              />
+            </>
             )
           }
 
