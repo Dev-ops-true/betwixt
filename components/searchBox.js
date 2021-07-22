@@ -22,7 +22,7 @@ const marks = {
   1500: '1500m',
 };
 
-export default function SearchBox({ setOrigin, setDestination, setCategory, setTravelMode, setRadius, handleSubmit }) {
+export default function SearchBox({ isOpen, setIsOpen, setOrigin, setDestination, setCategory, setTravelMode, radius, setRadius, handleSubmit }) {
   const { Handle } = Slider;
 
   const handle = props => {
@@ -42,43 +42,60 @@ export default function SearchBox({ setOrigin, setDestination, setCategory, setT
   };
 
   return (
-    <form className={styles.search} onSubmit={(e) => handleSubmit(e)}>
-      <p className={styles.searchtitle}>Your location</p>
-      <PlacesAutocomplete
-        setPlace={setOrigin}
-      />
+    <>
+      {isOpen ? (
+        <form className={styles.search} onSubmit={(e) => handleSubmit(e)}>
+          <p className={styles.searchtitle}>Your location</p>
+          <PlacesAutocomplete
+            setPlace={setOrigin}
+          />
 
-      <p className={styles.searchtitle}>Their location</p>
-      <PlacesAutocomplete
-        setPlace={setDestination}
-      />
-      
-      <span className={styles.row2search}>
-      <select className={styles.travelmode} name="travelMode" onChange={(e) => setTravelMode(e.target.value)}>
-        <option value="DRIVING">Driving</option>
-        <option value="WALKING">Walking</option>
-        <option value="BICYCLING">Cycling</option>
-        <option value="TRANSIT">Transit</option>
-      </select>
+          <p className={styles.searchtitle}>Their location</p>
+          <PlacesAutocomplete
+            setPlace={setDestination}
+          />
+          
+          <span className={styles.row2search}>
+          <select className={styles.travelmode} name="travelMode" onChange={(e) => setTravelMode(e.target.value)}>
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Cycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select>
 
-      <select name="category" className={styles.category} onChange={(e) => setTravelMode(e.target.value)}>
-        <option value="restaurant">Restaurant</option>
-        <option value="bar">Bar</option>
-        <option value="cafe">Cafe</option>
-      </select>
-      </span>
+          <select name="category" className={styles.category} onChange={(e) => setTravelMode(e.target.value)}>
+            <option value="restaurant">Restaurant</option>
+            <option value="bar">Bar</option>
+            <option value="cafe">Cafe</option>
+          </select>
+          </span>
 
-      <div className={styles.slider}>
-        <p className={styles.searchtitle2}>Choose your search distance from midpoint</p>
-        <Slider min={250} max={1500} marks={marks} step={null} defaultValue={500} handle={handle} trackStyle={[{ backgroundColor: '#3CB371' }, { backgroundColor: 'red' }]}
-          handleStyle={[{ borderColor: '#3CB371' }, { borderColor: 'black' }]}
-          railStyle={{ backgroundColor: 'white' }}
-          dotStyle={{ borderColor: 'white' }}
-          activeDotStyle={{ backgroundColor: '#3CB371' }}
-        />
-      </div>
+          <div className={styles.slider}>
+            <p className={styles.searchtitle2}>Choose your search distance from midpoint</p>
+            <Slider min={250} max={1500} marks={marks} step={null} defaultValue={radius} handle={handle} trackStyle={[{ backgroundColor: '#3CB371' }, { backgroundColor: 'red' }]}
+              handleStyle={[{ borderColor: '#3CB371' }, { borderColor: 'black' }]}
+              railStyle={{ backgroundColor: 'white' }}
+              dotStyle={{ borderColor: 'white' }}
+              activeDotStyle={{ backgroundColor: '#3CB371' }}
+            />
+          </div>
 
-      <button className={styles.searchbutton} type="submit"><RiSearchLine/>&nbsp;&nbsp;Find your midpoint</button>
-    </form>
+          <button className={styles.searchbutton} type="submit"><RiSearchLine/>&nbsp;&nbsp;Find your midpoint</button>
+        </form>
+      ) : (
+        <form className={styles.search}>
+          <div className={styles.slider}>
+            <p className={styles.searchtitle2}>Choose your search distance from midpoint</p>
+            <Slider min={250} max={1500} marks={marks} step={null} defaultValue={radius} handle={handle} trackStyle={[{ backgroundColor: '#3CB371' }, { backgroundColor: 'red' }]}
+              handleStyle={[{ borderColor: '#3CB371' }, { borderColor: 'black' }]}
+              railStyle={{ backgroundColor: 'white' }}
+              dotStyle={{ borderColor: 'white' }}
+              activeDotStyle={{ backgroundColor: '#3CB371' }}
+            />
+          </div>
+          <button className={styles.searchbutton} onClick={() => setIsOpen(true)}>New search</button>
+        </form>
+      )}
+    </>
   )
 }
