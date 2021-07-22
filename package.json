@@ -21,6 +21,7 @@
     "react-modal": "^3.14.3",
     "react-rangeslider": "^2.2.0",
     "react-rating-stars-component": "^2.2.0",
+    "react-spinners": "^0.11.0",
     "use-places-autocomplete": "^1.9.3",
     "yarn": "^1.22.10"
   },
