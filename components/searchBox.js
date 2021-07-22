@@ -22,7 +22,7 @@ const marks = {
   1500: '1500m',
 };
 
-export default function SearchBox({ setOrigin, setDestination, setRadius, handleSubmit }) {
+export default function SearchBox({ setOrigin, setDestination, setCategory, setTravelMode, setRadius, handleSubmit }) {
   const { Handle } = Slider;
 
   const handle = props => {
@@ -43,26 +43,25 @@ export default function SearchBox({ setOrigin, setDestination, setRadius, handle
 
   return (
     <form className={styles.search} onSubmit={(e) => handleSubmit(e)}>
-        <p className={styles.searchtitle}>Your location</p>
-        <PlacesAutocomplete
-          setPlace={setOrigin}
-        />
-      
-      
-        <p className={styles.searchtitle}>Their location</p>
-        <PlacesAutocomplete
-          setPlace={setDestination}
-        />
+      <p className={styles.searchtitle}>Your location</p>
+      <PlacesAutocomplete
+        setPlace={setOrigin}
+      />
+
+      <p className={styles.searchtitle}>Their location</p>
+      <PlacesAutocomplete
+        setPlace={setDestination}
+      />
       
       <span className={styles.row2search}>
-      <select className={styles.travelmode} name="travelMode">
+      <select className={styles.travelmode} name="travelMode" onChange={(e) => setTravelMode(e.target.value)}>
         <option value="DRIVING">Driving</option>
         <option value="WALKING">Walking</option>
         <option value="BICYCLING">Cycling</option>
         <option value="TRANSIT">Transit</option>
       </select>
 
-      <select name="category" className={styles.category}>
+      <select name="category" className={styles.category} onChange={(e) => setTravelMode(e.target.value)}>
         <option value="restaurant">Restaurant</option>
         <option value="bar">Bar</option>
         <option value="cafe">Cafe</option>
@@ -76,7 +75,7 @@ export default function SearchBox({ setOrigin, setDestination, setRadius, handle
           railStyle={{ backgroundColor: 'white' }}
           dotStyle={{ borderColor: 'white' }}
           activeDotStyle={{ backgroundColor: '#3CB371' }}
-          activeDotStyle={{ borderColor: '#3CB371' }}/>
+        />
       </div>
 
       <button className={styles.searchbutton} type="submit"><RiSearchLine/>&nbsp;&nbsp;Find your midpoint</button>

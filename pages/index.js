@@ -115,8 +115,6 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setTravelMode(event.target.childNodes[3].value);
-    setCategory(event.target.childNodes[4].value);
     setMapContainerStyle(mapContainerStyleAfterSubmit);
     setDirectionsOptionsChanged(true);
   }
@@ -139,7 +137,7 @@ export default function Home() {
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
       >
-        <SearchBox setOrigin={setOrigin} setDestination={setDestination} setRadius={setRadius} handleSubmit={handleSubmit} />
+        <SearchBox setOrigin={setOrigin} setDestination={setDestination} setRadius={setRadius} setCategory={setCategory} setTravelMode={setTravelMode} handleSubmit={handleSubmit} />
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}
