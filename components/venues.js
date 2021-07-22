@@ -49,7 +49,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
   const rad = (x) => {
     return x * Math.PI / 180;
   };
-  
+
   const getDistance = (p1, p2) => {
     const R = 6378137; // Earth’s mean radius in meter
     const dLat = rad(p2.lat() - p1.lat);
@@ -104,8 +104,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
             photo_reference={activeCard.photos && activeCard.photos[0].photo_reference}>
           </DetailedCard>
         }
-        <button className="button" onClick={closeModal}>close</button>
       </Modal>
-    </div>
+    </div >
   )
 }
