@@ -140,8 +140,7 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setMapContainerStyle(mapContainerStyleAfterSubmit);
-    setDirectionsOptionsChanged(true);
+    origin && destination && setDirectionsOptionsChanged(true);
   }
 
   const handleZoomLevel = () => {
@@ -164,6 +163,20 @@ export default function Home() {
     }
   }, [radius])
 
+  const resetSearch = () => {
+    setFormIsOpen(true);
+    setOrigin(null);
+    setDestination(null);
+    setTravelMode('DRIVING')
+    setCategory('restaurant');
+    setRadius(500);
+    setResponse(null);
+    setMidpoint(null);
+    setPlaces(null);
+    setMapContainerStyle(mapContainerStyleInitial);
+    mapRef.current.setZoom(12);
+  };
+
   return (
     <div>
       <h1><Image alt='betwixt logo' src={logo} width='231' height='52'></Image></h1>
@@ -171,7 +184,7 @@ export default function Home() {
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
       >
-        <SearchBox isOpen={formIsOpen} setIsOpen={setFormIsOpen} setOrigin={setOrigin} setDestination={setDestination} radius={radius} setRadius={setRadius} setCategory={setCategory} setTravelMode={setTravelMode} handleSubmit={handleSubmit} />
+        <SearchBox isOpen={formIsOpen} setIsOpen={setFormIsOpen} resetSearch={resetSearch} setOrigin={setOrigin} setDestination={setDestination} radius={radius} setRadius={setRadius} setCategory={setCategory} setTravelMode={setTravelMode} handleSubmit={handleSubmit} />
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}

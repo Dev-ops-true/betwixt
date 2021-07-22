@@ -22,7 +22,7 @@ const marks = {
   1500: '1500m',
 };
 
-export default function SearchBox({ isOpen, setIsOpen, setOrigin, setDestination, setCategory, setTravelMode, radius, setRadius, handleSubmit }) {
+export default function SearchBox({ isOpen, setIsOpen, resetSearch, setOrigin, setDestination, setCategory, setTravelMode, radius, setRadius, handleSubmit }) {
   const { Handle } = Slider;
 
   const handle = props => {
@@ -85,7 +85,7 @@ export default function SearchBox({ isOpen, setIsOpen, setOrigin, setDestination
       ) : (
         <form className={styles.search2}>
           <span>
-            <button className={styles.searchbutton2} onClick={() => setIsOpen(true)}><RiPinDistanceFill />&nbsp;New journey</button>
+            <button className={styles.searchbutton2} onClick={resetSearch}><RiPinDistanceFill />&nbsp;New journey</button>
 
             <span className={styles.slider2}>
               <p className={styles.searchtitle2}>Edit your current search radius</p>
