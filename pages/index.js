@@ -87,6 +87,7 @@ export default function Home() {
   const [mapContainerStyle, setMapContainerStyle] = React.useState(mapContainerStyleInitial);
   const [error, setError] = React.useState(null);
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [formIsOpen, setFormIsOpen] = React.useState(true);
 
   const mapRef = React.useRef(null);
   const circleRef = React.useRef(null);
@@ -129,6 +130,7 @@ export default function Home() {
           return place.business_status === 'OPERATIONAL'
         }))
         setMapContainerStyle(mapContainerStyleAfterSubmit);
+        setFormIsOpen(false);
       } else if (response.status === 'ZERO_RESULTS') {
         setError(response.status);
         openModal();
@@ -169,7 +171,7 @@ export default function Home() {
         googleMapsApiKey={process.env.NEXT_PUBLIC_API_KEY}
         libraries={libraries}
       >
-        <SearchBox setOrigin={setOrigin} setDestination={setDestination} setRadius={setRadius} setCategory={setCategory} setTravelMode={setTravelMode} handleSubmit={handleSubmit} />
+        <SearchBox isOpen={formIsOpen} setIsOpen={setFormIsOpen} setOrigin={setOrigin} setDestination={setDestination} radius={radius} setRadius={setRadius} setCategory={setCategory} setTravelMode={setTravelMode} handleSubmit={handleSubmit} />
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={12}

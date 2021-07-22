@@ -23,7 +23,23 @@
   border-radius: 15px;
   max-width: 30vw;
   background-image: url('https://ibb.co/CBNGxBd');
-  background-height: 30vh;
+}
+
+.search2 {
+  font-family: circular-medium;
+  font-size: 0.9rem;
+  position: absolute;
+  top: 2.3vh;
+  left: 23.3vw;
+  color: rgb(39, 39, 39) ;
+  z-index: 10;
+  margin: 0;
+  padding: 3vh;
+  text-align: left;
+  background: rgb(154, 235, 194);
+  border-radius: 15px;
+  width: 45vw;
+  background-image: url('https://ibb.co/CBNGxBd');
 }
 
 .searchtitle {
@@ -103,6 +119,8 @@
   margin-bottom: 0.7vw;
 }
 
+
+
 .slider {
   margin-bottom: 8vh;
   width: 320px;
@@ -115,7 +133,64 @@
   font-family: circular-medium;
 }
 
+.slider2 {
+  width: 320px;
+  align-items: center;
+  text-align: center;
+  margin-left: 4vh;
+  margin-top: -3.1vh;
+  margin-bottom: 0vh;
+  padding-bottom: 2.4vh;
+  color:#525252;
+  letter-spacing: 1px;
+  font-family: circular-medium;
+  position: absolute;
+  vertical-align: middle;
+}
+
+.searchbutton2 {
+  font-family: circular-medium;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  background: #44bd95;
+  width: 12vw;
+  height: 5vh;
+  border: 0px;
+  outline:0px;
+  padding: 3px;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  margin-right: 2vw;
+}
+
+.searchbutton2:hover {
+  font-family: circular-medium;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  background: #3d3d3d;
+  width: 12vw;
+  height: 5vh;
+  border: 0px;
+  outline:0px;
+  padding: 3px;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  margin-right: 2vw;
+}
+
 .row2search {
   margin-top: 3.8vh;
   
+}
+
+.divider {
+  color:#44bd95;
+  font-size: 4rem;
+  font-family: circular-book;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
