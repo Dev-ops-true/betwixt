@@ -54,20 +54,20 @@ export default function SearchBox({ isOpen, setIsOpen, setOrigin, setDestination
           <PlacesAutocomplete
             setPlace={setDestination}
           />
-          
-          <span className={styles.row2search}>
-          <select className={styles.travelmode} name="travelMode" onChange={(e) => setTravelMode(e.target.value)}>
-            <option value="DRIVING">Driving</option>
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Cycling</option>
-            <option value="TRANSIT">Transit</option>
-          </select>
 
-          <select name="category" className={styles.category} onChange={(e) => setTravelMode(e.target.value)}>
-            <option value="restaurant">Restaurant</option>
-            <option value="bar">Bar</option>
-            <option value="cafe">Cafe</option>
-          </select>
+          <span className={styles.row2search}>
+            <select className={styles.travelmode} name="travelMode" onChange={(e) => setTravelMode(e.target.value)}>
+              <option value="DRIVING">Driving</option>
+              <option value="WALKING">Walking</option>
+              <option value="BICYCLING">Cycling</option>
+              <option value="TRANSIT">Transit</option>
+            </select>
+
+            <select name="category" className={styles.category} onChange={(e) => setCategory(e.target.value)}>
+              <option value="restaurant">Restaurant</option>
+              <option value="bar">Bar</option>
+              <option value="cafe">Cafe</option>
+            </select>
           </span>
 
           <div className={styles.slider}>
@@ -80,24 +80,24 @@ export default function SearchBox({ isOpen, setIsOpen, setOrigin, setDestination
             />
           </div>
 
-          <button className={styles.searchbutton} type="submit"><RiSearchLine/>&nbsp;&nbsp;Find your midpoint</button>
+          <button className={styles.searchbutton} type="submit"><RiSearchLine />&nbsp;&nbsp;Find your midpoint</button>
         </form>
       ) : (
         <form className={styles.search2}>
           <span>
-          <button className={styles.searchbutton2} onClick={() => setIsOpen(true)}><RiPinDistanceFill/>&nbsp;New journey</button>
-          
-          <span className={styles.slider2}>
-            <p className={styles.searchtitle2}>Edit your current search radius</p>
-            <Slider min={250} max={1500} marks={marks} step={null} defaultValue={radius} handle={handle} trackStyle={[{ backgroundColor: '#3CB371' }, { backgroundColor: 'red' }]}
-              handleStyle={[{ borderColor: '#3CB371' }, { borderColor: 'black' }]}
-              railStyle={{ backgroundColor: 'white' }}
-              dotStyle={{ borderColor: 'white' }}
-              activeDotStyle={{ backgroundColor: '#3CB371' }}
-            />
+            <button className={styles.searchbutton2} onClick={() => setIsOpen(true)}><RiPinDistanceFill />&nbsp;New journey</button>
+
+            <span className={styles.slider2}>
+              <p className={styles.searchtitle2}>Edit your current search radius</p>
+              <Slider min={250} max={1500} marks={marks} step={null} defaultValue={radius} handle={handle} trackStyle={[{ backgroundColor: '#3CB371' }, { backgroundColor: 'red' }]}
+                handleStyle={[{ borderColor: '#3CB371' }, { borderColor: 'black' }]}
+                railStyle={{ backgroundColor: 'white' }}
+                dotStyle={{ borderColor: 'white' }}
+                activeDotStyle={{ backgroundColor: '#3CB371' }}
+              />
+            </span>
           </span>
-          </span>
-          
+
         </form>
       )}
     </>
