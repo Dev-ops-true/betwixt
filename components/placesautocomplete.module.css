@@ -10,6 +10,7 @@
   position:static;
   border-radius: 0 0 5px 5px;
   overflow-x: hidden;
+  cursor: pointer;
 }
 
 .listoptions {

@@ -4,7 +4,7 @@ import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import React from 'react';
 import Slider, { SliderTooltip } from 'rc-slider';
-import { RiSearchLine } from "react-icons/ri";
+import { RiSearchLine, RiPinDistanceFill } from "react-icons/ri";
 
 const wrapperStyle = {
   width: 320,
@@ -83,17 +83,21 @@ export default function SearchBox({ isOpen, setIsOpen, setOrigin, setDestination
           <button className={styles.searchbutton} type="submit"><RiSearchLine/>&nbsp;&nbsp;Find your midpoint</button>
         </form>
       ) : (
-        <form className={styles.search}>
-          <div className={styles.slider}>
-            <p className={styles.searchtitle2}>Choose your search distance from midpoint</p>
+        <form className={styles.search2}>
+          <span>
+          <button className={styles.searchbutton2} onClick={() => setIsOpen(true)}><RiPinDistanceFill/>&nbsp;New journey</button>
+          
+          <span className={styles.slider2}>
+            <p className={styles.searchtitle2}>Edit your current search radius</p>
             <Slider min={250} max={1500} marks={marks} step={null} defaultValue={radius} handle={handle} trackStyle={[{ backgroundColor: '#3CB371' }, { backgroundColor: 'red' }]}
               handleStyle={[{ borderColor: '#3CB371' }, { borderColor: 'black' }]}
               railStyle={{ backgroundColor: 'white' }}
               dotStyle={{ borderColor: 'white' }}
               activeDotStyle={{ backgroundColor: '#3CB371' }}
             />
-          </div>
-          <button className={styles.searchbutton} onClick={() => setIsOpen(true)}>New search</button>
+          </span>
+          </span>
+          
         </form>
       )}
     </>
