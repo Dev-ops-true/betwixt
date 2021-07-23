@@ -1,5 +1,5 @@
 .places {
-  background-color: white;
+  background: rgb(154, 235, 194);
   right: 0vw;
   width: 30vw;
   max-width: 30vw;
@@ -9,15 +9,24 @@
   
 }
 
+.venuemenu {
+  text-align: center;
+  background: rgb(154, 235, 194);
+  margin-bottom: 6.2vh;
+}
+
 .sortby {
   font-family: circular-medium;
   font-size: 1rem;
   color: rgb(39, 39, 39);
-  width: 6vw;
+  width: 11vw;
+  height: 4vh;
   border: 0px;
   outline:0px;
   padding: 4px;
   border-radius: 6px;
-  margin-right: 1vw;
-  display:flexbox;
+  margin-left: 1vw;
+  position:absolute;
+  top: 8vh;
+  right: 16vh;
 }

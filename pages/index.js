@@ -4,6 +4,7 @@ import MarkersAndPlaces from '../components/markersAndPlaces';
 import Modal from 'react-modal';
 import Image from 'next/image'
 import logo from '../public/logo.png'
+import { RiEmotionUnhappyLine } from "react-icons/ri";
 
 import {
   GoogleMap,
@@ -223,7 +224,7 @@ export default function Home() {
           center !== null && (
             <>
               <Marker
-              icon={"http://maps.google.com/mapfiles/kml/pal3/icon56.png"}
+              icon={"https://i.ibb.co/mbQnPm6/minier.png"}
               position={center}
               title="Center"
               />
@@ -269,11 +270,14 @@ export default function Home() {
               onRequestClose={closeModal}
               style={customStyles}
             >
-              <h2>Zero results.</h2>
-              <div>
-                <p>Please refine your search and try again.</p>
+              <div className="zeroresults">
+              <div className="sadface"><h2><RiEmotionUnhappyLine/>&nbsp;</h2></div>
+              <h2>No results</h2>
+              
+                <p>Please refine your search.</p>
+              
+              <button className="button" onClick={closeModal}>Okay, I&apos;ll try again</button>
               </div>
-              <button className="button" onClick={closeModal}>Okay</button>
             </Modal>
           }
         </GoogleMap>

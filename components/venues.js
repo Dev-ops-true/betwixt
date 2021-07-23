@@ -4,6 +4,7 @@ import DetailedCard from './detailedCard';
 import styles from './venues.module.css';
 import Modal from 'react-modal';
 import { Autocomplete } from '@react-google-maps/api';
+import { RiHomeHeartFill } from "react-icons/ri";
 
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
@@ -59,11 +60,13 @@ export default function Venues({ places, midpoint, onMouseOver }) {
 
   return (
     <div className={styles.places}>
-      <h2>Your places.</h2>
+      <div className={styles.venuemenu}>
+      <h2><RiHomeHeartFill/>&nbsp;Discover your places</h2>
       <select className={styles.sortby} name="sortby" onChange={(e) => setSortBy(e.target.value)}>
-        <option value="Rating">Rating</option>
-        <option value="Closest">Closest</option>
+        <option value="Rating">Sort by rating</option>
+        <option value="Closest">Sort by distance</option>
       </select>
+      </div>
       <ul>
         {
           places && places.sort((place, nextPlace) => {
