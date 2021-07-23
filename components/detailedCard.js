@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import styles from './detailedCard.module.css'
 import Image from 'next/image'
 import Collapsible from 'react-collapsible';
-import { BiPhone, BiWindowAlt, BiTime, BiMap } from "react-icons/bi";
+import { RiPhoneFill, RiComputerFill, RiMapPin2Fill } from "react-icons/ri";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
@@ -65,10 +65,10 @@ export default function DetailedCard({ place_id, photo_reference }) {
               <span className={styles.card_ratings_num}>
                 {`${activePlace.user_ratings_total || 'No'} reviews`}</span>
               <div>
-                <p className={styles.phonenumber}><BiPhone />&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
-                {activePlace.website && <p className={styles.phonenumber}><BiWindowAlt />&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
+                <p className={styles.phonenumber}><RiPhoneFill />&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
+                {activePlace.website && <p className={styles.phonenumber}><RiComputerFill />&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
                 </p>}
-                <p className={styles.phonenumber}><BiMap />&nbsp;&nbsp;{`${activePlace.formatted_address}`}</p>
+                <p className={styles.phonenumber}><RiMapPin2Fill />&nbsp;&nbsp;{`${activePlace.formatted_address}`}</p>
                 <p className={styles.openinghours}><Collapsible trigger="&#128337;&nbsp;&nbsp;Opening Hours &#9660;">
                   {
                     activePlace.opening_hours?.weekday_text.map((dayHours) => {

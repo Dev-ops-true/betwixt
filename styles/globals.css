@@ -42,8 +42,8 @@ h1 {
   font-size: 5rem;
   letter-spacing: -0.3rem;
   position: absolute;
-  top: 0.4rem;
-  left: 1.2rem;
+  top: 0.4vh;
+  left: 2.1vw;
   color: rgb(44, 44, 44) ;
   z-index: 10;
   margin: 0;
@@ -54,6 +54,7 @@ h2 {
   display: inline-flex;
   font-family: circular-black;
   font-size: 1.5rem;
+  color: rgb(44, 44, 44) ;
 }
 
 .search {
@@ -79,14 +80,30 @@ h2 {
   color: rgb(53, 53, 53);
   padding: 0.5rem 1rem 0.7rem 1rem;
   cursor: pointer;
-  margin-right: 35px;
-  margin-top: 10px;
   float: right;
   font-family: circular-medium;
   font-size: 1rem;
   border-radius: 5px;
+  position:absolute;
+  right: 3.45vw;
 }
 
 .button:focus {
   outline: none;
+}
+
+.logo {
+  padding-left:10vw;
+}
+
+.zeroresults {
+  text-align: center;
+  padding: 2vh;
+  margin-top: -3vh;
+  margin-bottom: 3vh;
+}
+
+.sadface {
+  margin-bottom: -5vh;
+  padding: 0 0 0 0;
 }

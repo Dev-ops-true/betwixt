@@ -8,6 +8,10 @@
   overflow: auto;
   margin: -1.3vh 0 0 0;
   vertical-align: middle !important;
+  border-color: white;
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
 
 .window_title {
