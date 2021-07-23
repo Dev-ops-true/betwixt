@@ -65,7 +65,7 @@ export default function DetailedCard({ place_id, photo_reference }) {
               <span className={styles.card_ratings_num}>
                 {`${activePlace.user_ratings_total || 'No'} reviews`}</span>
               <div>
-                <p className={styles.phonenumber}><BiPhone />&nbsp;&nbsp;{`${activePlace.international_phone_number}`}</p>
+                <p className={styles.phonenumber}><BiPhone />&nbsp;&nbsp;{`${activePlace.international_phone_number || "No Phone"}`}</p>
                 {activePlace.website && <p className={styles.phonenumber}><BiWindowAlt />&nbsp;&nbsp;<a href={`${activePlace.website}`} target="_blank" rel="noreferrer" >{`${activePlace.website.split('/')[2]}`} </a>
                 </p>}
                 <p className={styles.phonenumber}><BiMap />&nbsp;&nbsp;{`${activePlace.formatted_address}`}</p>

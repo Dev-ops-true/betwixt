@@ -74,6 +74,7 @@ export default function Venues({ places, midpoint, onMouseOver }) {
             }
           }).map((place) => (
             <Card key={place.name}
+              place={place}
               name={place.name}
               rating={place.rating}
               address={place.vicinity}
