@@ -276,7 +276,7 @@ export default function Home() {
               
                 <p>Please refine your search.</p>
               
-              <button className="button" onClick={closeModal}>Okay, I'll try again</button>
+              <button className="button" onClick={closeModal}>Okay, I&apos;ll try again</button>
               </div>
             </Modal>
           }
