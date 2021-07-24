@@ -1,4 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Betwixt
+
+![Demo](https://www.youtube.com/watch?v=lxNTDkRQrRQ)
+
+Try at betwixt-green.vercel.app
+
+A web application that finds the midpoint between two locations based on travel time, displaying a list of local venues within a selected radius of that midpoint.
+
+## Key Features
+
+- Search: Lets the user search for places based on travelmode - walking, cycling, driving or public transport.
+- Adjustable Radius: Allows the user to adjust the radius to widen/shrink the search range.
+- Venue Filter: Allows the user to select the venue type - Bars, restaurants or cafes.
+- Search Autocomplete: Predicts the user input.
+- Current Location: Shows the user’s current location on the map when the website loads.
+- Fluid map user interface: Automatically zooms in & out when required, interactive location markers & a visually responsive radius.
+- Sort: Lets the user sort the venue list by - Rating or Distance from midpoint.
+- Detailed Venue Info Modal: Shows the user important venue information such as rating, contact details and opening hours at a glance.
+- Interactive Markers and Infowindows: Shows key venue information as you hover over the list of venues or markers on the map.
+- Intuitive & modern user interface: Allows the user to instantly & instinctively know how to use the app.
 
 ## Getting Started
 
@@ -26,9 +45,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
