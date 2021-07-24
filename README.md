@@ -1,8 +1,7 @@
 # Betwixt
 
-<p align="center"><img src="public/demo.gif" alt="demo-gif" width="600" height="300"></p>
+<img src="public/demo.gif" alt="demo-gif">
 
-Watch full recording below:
 [![DEMO VIDEO](https://img.youtube.com/vi/lxNTDkRQrRQ/0.jpg)](https://www.youtube.com/watch?v=lxNTDkRQrRQ)
 
 Try at https://betwixt-green.vercel.app
