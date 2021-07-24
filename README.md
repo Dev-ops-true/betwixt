@@ -1,8 +1,8 @@
 # Betwixt
 
-![Demo](https://www.youtube.com/watch?v=lxNTDkRQrRQ)
+![Demo](https://camo.githubusercontent.com/c1d6bde4c15e1ba3b48abf961370124f0695191d9b0b663c18f261f24ecabae4/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f76396b6d54485273334344755a33346665682f67697068792e676966)
 
-Try at betwixt-green.vercel.app
+Try at https://betwixt-green.vercel.app
 
 A web application that finds the midpoint between two locations based on travel time, displaying a list of local venues within a selected radius of that midpoint.
 
@@ -18,6 +18,10 @@ A web application that finds the midpoint between two locations based on travel 
 - Detailed Venue Info Modal: Shows the user important venue information such as rating, contact details and opening hours at a glance.
 - Interactive Markers and Infowindows: Shows key venue information as you hover over the list of venues or markers on the map.
 - Intuitive & modern user interface: Allows the user to instantly & instinctively know how to use the app.
+
+## Tech Stack
+
+- Built with React and Next.js
 
 ## Getting Started
 
