@@ -2,7 +2,9 @@
 
 <img src="public/demo.gif" alt="demo-gif">
 
-[![DEMO VIDEO](https://img.youtube.com/vi/lxNTDkRQrRQ/0.jpg)](https://www.youtube.com/watch?v=lxNTDkRQrRQ)
+### Watch full recording below:
+
+[![DEMO VIDEO](https://img.youtube.com/vi/lxNTDkRQrRQ/hqdefault.jpg)](https://www.youtube.com/watch?v=lxNTDkRQrRQ)
 
 Try at https://betwixt-green.vercel.app
 
