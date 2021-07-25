@@ -29,14 +29,14 @@ A single-page application that finds the midpoint between two locations based on
 
 ## Getting Started
 
-1. Clone this repository. 
+1. Clone this repository.
 
 2. Install dependencies:
 
 ```zsh
-npm install 
-# or 
-yarn install #recommended 
+npm install
+# or
+yarn install #recommended
 ```
 
 3. Run the development server:
@@ -44,10 +44,18 @@ yarn install #recommended
 ```zsh
 npm run dev
 # or
-yarn dev #recommended 
+yarn dev #recommended
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 Or try online at: https://betwixt-green.vercel.app
 
+# Credits
+
+- [Robert Dupplaw](https://github.com/rdupplaw)
+- [Gunel Mehdiyeva-Chau](https://github.com/GunelMC)
+- [Stu Mcardle](https://github.com/StuMcardle)
+- [Dewald Viljoen](https://github.com/Dev-ops-true)
+- [Felix Piercy](https://github.com/fel1xp)
+- [James McMullan](https://github.com/JamesMcMull)
