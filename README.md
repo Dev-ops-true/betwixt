@@ -44,7 +44,7 @@ yarn install #recommended
 ```zsh
 npm run dev
 # or
-yarn dev #recommended
+yarn run dev #recommended
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
